@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["MWM_HINTS_DECORATIONS",""]],"enum":[["StateOperation",""],["WindowType","X window type. Maps directly to `_NET_WM_WINDOW_TYPE`."]],"struct":[["NormalHints",""]]});

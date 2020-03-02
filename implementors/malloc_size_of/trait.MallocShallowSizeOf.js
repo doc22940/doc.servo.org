@@ -1,0 +1,5 @@
+(function() {var implementors = {};
+implementors["malloc_size_of"] = [];
+implementors["style"] = [{"text":"impl <a class=\"trait\" href=\"malloc_size_of/trait.MallocShallowSizeOf.html\" title=\"trait malloc_size_of::MallocShallowSizeOf\">MallocShallowSizeOf</a> for <a class=\"enum\" href=\"style/rule_tree/enum.RuleNodeChildren.html\" title=\"enum style::rule_tree::RuleNodeChildren\">RuleNodeChildren</a>","synthetic":false,"types":["style::rule_tree::RuleNodeChildren"]}];
+implementors["style_traits"] = [{"text":"impl&lt;T:&nbsp;<a class=\"trait\" href=\"core/marker/trait.Sized.html\" title=\"trait core::marker::Sized\">Sized</a>&gt; <a class=\"trait\" href=\"malloc_size_of/trait.MallocShallowSizeOf.html\" title=\"trait malloc_size_of::MallocShallowSizeOf\">MallocShallowSizeOf</a> for <a class=\"struct\" href=\"style_traits/owned_slice/struct.OwnedSlice.html\" title=\"struct style_traits::owned_slice::OwnedSlice\">OwnedSlice</a>&lt;T&gt;","synthetic":false,"types":["style_traits::owned_slice::OwnedSlice"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

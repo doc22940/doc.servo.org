@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["UnitError","Future for the `unit_error` combinator."]]});

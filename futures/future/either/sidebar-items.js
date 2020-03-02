@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Either","Combines two different futures yielding the same item and error types into a single type."]]});

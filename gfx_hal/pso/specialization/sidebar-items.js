@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Specialization","Specialization information structure."],["SpecializationConstant","Specialization constant for pipelines."]]});

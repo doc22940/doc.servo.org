@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["UnixDatagram","An I/O object representing a Unix datagram socket."]]});

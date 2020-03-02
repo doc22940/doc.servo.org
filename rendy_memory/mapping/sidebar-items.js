@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["range",""],["write",""]],"struct":[["Coherent","Coherent marker."],["MappedRange","Represents range of the memory mapped to the host. Provides methods for safer host access to the memory."],["MaybeCoherent","Value that contains either coherent marker or non-coherent marker."],["NonCoherent","Non-coherent marker."]]});

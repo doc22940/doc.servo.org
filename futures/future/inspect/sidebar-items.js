@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["Inspect","Do something with the item of a future, passing it on."]]});

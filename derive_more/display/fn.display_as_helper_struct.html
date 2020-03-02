@@ -1,0 +1,22 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `display_as_helper_struct` fn in crate `derive_more`."><meta name="keywords" content="rust, rustlang, rust-lang, display_as_helper_struct"><title>derive_more::display::display_as_helper_struct - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc fn"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../derive_more/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a><div class="sidebar-elems"><p class='location'><a href='../index.html'>derive_more</a>::<wbr><a href='index.html'>display</a></p><script>window.sidebarCurrent = {name: 'display_as_helper_struct', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../src/derive_more/display.rs.html#149-166' title='goto source code'>[src]</a></span><span class='in-band'>Function <a href='../index.html'>derive_more</a>::<wbr><a href='index.html'>display</a>::<wbr><a class="fn" href=''>display_as_helper_struct</a></span></h1><pre class='rust fn'>fn display_as_helper_struct() -&gt; <a class="struct" href="../../proc_macro2/struct.TokenStream.html" title="struct proc_macro2::TokenStream">TokenStream</a></pre><div class='docblock'><p>Create a helper struct that is required by some <code>Display</code> impls.</p>
+<p>The struct is necessary in cases where <code>Display</code> is derived for an enum
+with an outer <code>#[display(fmt = &quot;...&quot;)]</code> attribute and if that outer
+format-string contains a single placeholder. In that case, we have to
+format twice:</p>
+<ul>
+<li>we need to format each variant according to its own, optional
+format-string,</li>
+<li>we then need to insert this formatted variant into the outer
+format-string.</li>
+</ul>
+<p>This helper struct solves this as follows:</p>
+<ul>
+<li>formatting the whole object inserts the helper struct into the outer
+format string,</li>
+<li>upon being formatted, the helper struct calls an inner closure to produce
+its formatted result,</li>
+<li>the closure in turn uses the inner, optional format-string to produce its
+result. If there is no inner format-string, it falls back to plain
+<code>$trait::fmt()</code>.</li>
+</ul>
+</div></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../";window.currentCrate = "derive_more";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>

@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["EncodingError",""]],"struct":[["ChunkWriter",""],["Encoder","PNG Encoder"],["StreamWriter","Streaming png writer"],["Writer","PNG writer"]],"type":[["Result",""]]});

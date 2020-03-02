@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["SinkFromErr","A sink combinator to change the error type of a sink."]]});

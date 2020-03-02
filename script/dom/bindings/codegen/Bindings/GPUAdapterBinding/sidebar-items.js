@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["GPUAdapterBinding",""]],"struct":[["GPUDeviceDescriptor",""],["GPUExtensions",""],["GPULimits",""]]});

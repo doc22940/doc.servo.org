@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["Map","A stream combinator which will change the type of a stream from one type to another."]]});

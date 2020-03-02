@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["select_ok","Creates a new future which will select the first successful future over a list of futures."]],"struct":[["SelectOk","Future for the `select_ok` combinator, waiting for one of any of a list of futures to successfully complete. Unlike `select_all`, this future ignores all but the last error, if there are any."]]});

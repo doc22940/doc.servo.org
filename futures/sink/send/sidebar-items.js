@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["Send","Future for the `Sink::send` combinator, which sends a value to a sink and then waits until the sink has fully flushed."]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["Results","A stream combinator used to convert a `Stream<Item=T,Error=E>` to a `Stream<Item=Result<T,E>>`."]]});

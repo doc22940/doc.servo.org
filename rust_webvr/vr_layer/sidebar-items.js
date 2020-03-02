@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["VRLayer","Data provided to a VRDisplay and presented in the HMD."]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["set_permissions","Changes the permissions found on a file or a directory."]],"struct":[["SetPermissionsFuture","Future returned by `set_permissions`."]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["point2",""],["point3",""]],"struct":[["Point2D","A 2d Point tagged with a unit."],["Point3D","A 3d Point tagged with a unit."]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Framebuffer",""],["SurfaceAccess",""],["SurfaceType",""]],"struct":[["SurfaceID",""],["SurfaceInfo","Various data about the surface."]]});

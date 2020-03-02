@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["LAZY",""]],"fn":[["check_for_errors_in",""],["close",""],["dlclose",""],["dlerror",""],["dlopen",""],["dlsym",""],["open",""],["open_external",""],["open_internal",""],["symbol",""]],"struct":[["LOCK",""]]});

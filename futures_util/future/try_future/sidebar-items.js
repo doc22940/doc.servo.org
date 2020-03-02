@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["and_then",""],["err_into",""],["flatten_stream_sink",""],["inspect_err",""],["inspect_ok",""],["into_future",""],["map_err",""],["map_ok",""],["map_ok_or_else",""],["or_else",""],["try_chain",""],["try_flatten_stream",""],["unwrap_or_else",""]],"trait":[["TryFutureExt","Adapters specific to [`Result`]-returning futures"]]});

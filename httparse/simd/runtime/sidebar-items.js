@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["AVX_2",""],["INIT",""],["NONE",""],["SSE_42",""]],"fn":[["detect",""],["match_header_value_vectored",""],["match_uri_vectored",""]],"static":[["FEATURE",""]]});

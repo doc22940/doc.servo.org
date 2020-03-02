@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["MAX_SETS",""],["MIN_SETS",""]],"fn":[["allocate_from_pool",""]],"struct":[["Allocation",""],["DescriptorAllocator","Descriptor allocator. Can be used to allocate descriptor sets for any layout."],["DescriptorBucket",""],["DescriptorPool",""],["DescriptorSet","Descriptor set from allocator."]]});

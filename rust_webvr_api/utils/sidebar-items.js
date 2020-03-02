@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["adjoint_matrix",""],["copysign",""],["determinant2x2",""],["determinant3x3",""],["determinant4x4",""],["inverse_matrix",""],["matrix_to_quat",""],["multiply_matrix",""],["new_id",""],["timestamp",""]],"static":[["DEVICE_ID_COUNTER",""]]});

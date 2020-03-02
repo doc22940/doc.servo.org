@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["FromErr","A stream combinator to change the error type of a stream."]]});

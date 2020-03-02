@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DOMOBJECT_FOR_HTMLAnchorElement",""]],"fn":[["follow_hyperlink","https://html.spec.whatwg.org/multipage/#following-hyperlinks-2"]],"struct":[["HTMLAnchorElement",""]]});

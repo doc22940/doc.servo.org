@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_Frame",""],["_IMPL_DESERIALIZE_FOR_FrameUpdateEvent",""],["_IMPL_SERIALIZE_FOR_Frame",""],["_IMPL_SERIALIZE_FOR_FrameUpdateEvent",""]],"enum":[["FrameUpdateEvent",""]],"struct":[["Frame","The per-frame data that is provided by the device. https://www.w3.org/TR/webxr/#xrframe"]]});

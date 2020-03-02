@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["TiffError","Tiff error kinds."],["TiffFormatError",""],["TiffUnsupportedError",""]],"type":[["TiffResult","Result of an image decoding/encoding process"]]});

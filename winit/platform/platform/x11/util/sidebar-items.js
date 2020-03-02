@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["has_flag",""],["maybe_change",""],["reinterpret",""]],"mod":[["atom",""],["client_msg",""],["format",""],["geometry",""],["hint",""],["icon",""],["input",""],["memory",""],["randr",""],["window_property",""],["wm",""]],"struct":[["Flusher",""]]});

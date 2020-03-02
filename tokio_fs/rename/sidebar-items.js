@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["rename","Rename a file or directory to a new name, replacing the original file if `to` already exists."]],"struct":[["RenameFuture","Future returned by `rename`."]]});

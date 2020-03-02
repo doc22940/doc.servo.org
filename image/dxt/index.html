@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `dxt` mod in crate `image`."><meta name="keywords" content="rust, rustlang, rust-lang, dxt"><title>image::dxt - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../image/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a><p class='location'>Module dxt</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#functions">Functions</a></li><li><a href="#types">Type Definitions</a></li></ul></div><p class='location'><a href='../index.html'>image</a></p><script>window.sidebarCurrent = {name: 'dxt', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../src/image/dxt.rs.html#1-811' title='goto source code'>[src]</a></span><span class='in-band'>Module <a href='../index.html'>image</a>::<wbr><a class="mod" href=''>dxt</a></span></h1><div class='docblock'><p>Decoding of DXT (S3TC) compression</p>
+<p>DXT is an image format that supports lossy compression</p>
+<h1 id="related-links" class="section-header"><a href="#related-links">Related Links</a></h1>
+<ul>
+<li><a href="https://www.khronos.org/registry/OpenGL/extensions/EXT/EXT_texture_compression_s3tc.txt">https://www.khronos.org/registry/OpenGL/extensions/EXT/EXT_texture_compression_s3tc.txt</a> - Description of the DXT compression OpenGL extensions.</li>
+</ul>
+<p>Note: this module only implements bare DXT encoding/decoding, it does not parse formats that can contain DXT files like .dds</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table><tr class='module-item'><td><a class="struct" href="struct.DXTDecoder.html" title='image::dxt::DXTDecoder struct'>DXTDecoder</a></td><td class='docblock-short'><p>DXT decoder</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.DXTEncoder.html" title='image::dxt::DXTEncoder struct'>DXTEncoder</a></td><td class='docblock-short'><p>DXT encoder</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.DXTReader.html" title='image::dxt::DXTReader struct'>DXTReader</a></td><td class='docblock-short'><p>DXT reader</p>
+</td></tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table><tr class='module-item'><td><a class="enum" href="enum.DXTVariant.html" title='image::dxt::DXTVariant enum'>DXTVariant</a></td><td class='docblock-short'><p>What version of DXT compression are we using?
+Note that DXT2 and DXT4 are left away as they're
+just DXT3 and DXT5 with premultiplied alpha</p>
+</td></tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table><tr class='module-item'><td><a class="fn" href="fn.alpha_table_dxt5.html" title='image::dxt::alpha_table_dxt5 fn'>alpha_table_dxt5</a></td><td class='docblock-short'><p>Constructs the DXT5 alpha lookup table from the two alpha entries
+if alpha0 &gt; alpha1, constructs a table of [a0, a1, 6 linearly interpolated values from a0 to a1]
+if alpha0 &lt;= alpha1, constructs a table of [a0, a1, 4 linearly interpolated values from a0 to a1, 0, 0xFF]</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.decode_dxt1_block.html" title='image::dxt::decode_dxt1_block fn'>decode_dxt1_block</a></td><td class='docblock-short'><p>Decodes a 8-byte bock of dxt5 data to a 16xRGB block</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.decode_dxt1_row.html" title='image::dxt::decode_dxt1_row fn'>decode_dxt1_row</a></td><td class='docblock-short'><p>Decode a row of DXT1 data to four rows of RGBA data.
+source.len() should be a multiple of 8, otherwise this panics.</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.decode_dxt3_block.html" title='image::dxt::decode_dxt3_block fn'>decode_dxt3_block</a></td><td class='docblock-short'><p>Decodes a 16-byte bock of dxt3 data to a 16xRGBA block</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.decode_dxt3_row.html" title='image::dxt::decode_dxt3_row fn'>decode_dxt3_row</a></td><td class='docblock-short'><p>Decode a row of DXT3 data to four rows of RGBA data.
+source.len() should be a multiple of 16, otherwise this panics.</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.decode_dxt5_block.html" title='image::dxt::decode_dxt5_block fn'>decode_dxt5_block</a></td><td class='docblock-short'><p>Decodes a 16-byte bock of dxt5 data to a 16xRGBA block</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.decode_dxt5_row.html" title='image::dxt::decode_dxt5_row fn'>decode_dxt5_row</a></td><td class='docblock-short'><p>Decode a row of DXT5 data to four rows of RGBA data.
+source.len() should be a multiple of 16, otherwise this panics.</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.decode_dxt_colors.html" title='image::dxt::decode_dxt_colors fn'>decode_dxt_colors</a></td><td class='docblock-short'><p>decodes an 8-byte dxt color block into the RGB channels of a 16xRGB or 16xRGBA block.
+source should have a length of 8, dest a length of 48 (RGB) or 64 (RGBA)</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.diff.html" title='image::dxt::diff fn'>diff</a></td><td class='docblock-short'><p>returns the squared error between two RGB values</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.enc565_decode.html" title='image::dxt::enc565_decode fn'>enc565_decode</a></td><td class='docblock-short'><p>decodes a 5-bit R, 6-bit G, 5-bit B 16-bit packed color value into 8-bit RGB
+mapping is done so min/max range values are preserved. So for 5-bit
+values 0x00 -&gt; 0x00 and 0x1F -&gt; 0xFF</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.enc565_encode.html" title='image::dxt::enc565_encode fn'>enc565_encode</a></td><td class='docblock-short'><p>encodes an 8-bit RGB value into a 5-bit R, 6-bit G, 5-bit B 16-bit packed color value
+mapping preserves min/max values. It is guaranteed that i == encode(decode(i)) for all i</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.encode_dxt1_block.html" title='image::dxt::encode_dxt1_block fn'>encode_dxt1_block</a></td><td class='docblock-short'><p>Encodes a RGBx16 sequence of bytes into a 8 bytes DXT1 block</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.encode_dxt1_row.html" title='image::dxt::encode_dxt1_row fn'>encode_dxt1_row</a></td><td class='docblock-short'><p>Decode a row of DXT1 data to four rows of RGBA data.
+source.len() should be a multiple of 8, otherwise this panics.</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.encode_dxt3_block.html" title='image::dxt::encode_dxt3_block fn'>encode_dxt3_block</a></td><td class='docblock-short'><p>Encodes a RGBAx16 sequence of bytes into a 16 bytes DXT3 block</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.encode_dxt3_row.html" title='image::dxt::encode_dxt3_row fn'>encode_dxt3_row</a></td><td class='docblock-short'><p>Decode a row of DXT3 data to four rows of RGBA data.
+source.len() should be a multiple of 16, otherwise this panics.</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.encode_dxt5_alpha.html" title='image::dxt::encode_dxt5_alpha fn'>encode_dxt5_alpha</a></td><td class='docblock-short'><p>Encodes a buffer of 16 alpha bytes into a dxt5 alpha index table,
+where the alpha table they are indexed against is created by
+calling alpha_table_dxt5(alpha0, alpha1)
+returns the resulting error and alpha table</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.encode_dxt5_block.html" title='image::dxt::encode_dxt5_block fn'>encode_dxt5_block</a></td><td class='docblock-short'><p>Encodes a RGBAx16 sequence of bytes to a 16 bytes DXT5 block</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.encode_dxt5_row.html" title='image::dxt::encode_dxt5_row fn'>encode_dxt5_row</a></td><td class='docblock-short'><p>Decode a row of DXT5 data to four rows of RGBA data.
+source.len() should be a multiple of 16, otherwise this panics.</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.encode_dxt_colors.html" title='image::dxt::encode_dxt_colors fn'>encode_dxt_colors</a></td><td class='docblock-short'><p>Tries to perform the color encoding part of dxt compression
+the approach taken is simple, it picks unique combinations
+of the colors present in the block, and attempts to encode the
+block with each, picking the encoding that yields the least
+squared error out of all of them.</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.square.html" title='image::dxt::square fn'>square</a></td><td class='docblock-short'><p>utility function: squares a value</p>
+</td></tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table><tr class='module-item'><td><a class="type" href="type.Rgb.html" title='image::dxt::Rgb type'>Rgb</a></td><td class='docblock-short'></td></tr></table></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../";window.currentCrate = "image";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>

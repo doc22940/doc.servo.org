@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["IdMatchesAtom",""],["IdMatchesAtom1",""],["IsWindowSlow",""],["ToWindowProxyIfWindowSlow",""]],"struct":[["DefineComparisonOps",""],["TypeIsGCThing",""],["UniqueSelector",""]],"type":[["UniqueSelector_SingleObject",""]]});

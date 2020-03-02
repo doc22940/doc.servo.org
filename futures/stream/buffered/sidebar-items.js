@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["Buffered","An adaptor for a stream of futures to execute the futures concurrently, if possible."]]});

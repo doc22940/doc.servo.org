@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["imp","This is the Teddy searcher, but ported to AVX2."]]});

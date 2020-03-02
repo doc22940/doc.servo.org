@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_Translation2D",""],["_IMPL_SERIALIZE_FOR_Translation2D",""]],"struct":[["Translation2D","A 2d transformation from a space to another that can only express translations."],["Translation3D","A 3d transformation from a space to another that can only express translations."]]});

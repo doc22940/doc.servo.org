@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["NativeDisplay","Specifies the type of display passed as `native_display`."],["SurfaceType",""]],"fn":[["choose_fbconfig",""],["create_context",""],["get_native_display",""]],"mod":[["egl",""],["make_current_guard",""]],"struct":[["Context",""],["ContextPrototype",""],["EGL",""]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["Map","Future for the `map` combinator, changing the type of a future."]]});

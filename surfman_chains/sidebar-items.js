@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["SwapChain","A thread-safe swap chain."],["SwapChainData",""],["SwapChains","A thread-safe collection of swap chains."]]});

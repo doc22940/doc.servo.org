@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Map","Future for the `map` method."]]});

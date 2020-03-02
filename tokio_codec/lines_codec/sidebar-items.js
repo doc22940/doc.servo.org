@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["utf8",""],["without_carriage_return",""]],"struct":[["LinesCodec","A simple `Codec` implementation that splits up data into lines."]]});

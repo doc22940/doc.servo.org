@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["set_element_flags",""]],"mod":[["audio_decoder",""],["audio_sink",""],["media_capture",""],["media_stream",""],["media_stream_source",""],["player",""],["registry_scanner",""],["render",""],["source",""],["webrtc",""]],"struct":[["BACKEND_BASE_TIME",""],["ErrorLoadingPlugins",""],["GStreamerBackend",""],["MutexGuard",""]]});

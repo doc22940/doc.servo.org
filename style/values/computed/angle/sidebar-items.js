@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["RAD_PER_DEG",""],["_IMPL_DESERIALIZE_FOR_Angle",""],["_IMPL_SERIALIZE_FOR_Angle",""]],"struct":[["Angle","A computed angle in degrees."]]});

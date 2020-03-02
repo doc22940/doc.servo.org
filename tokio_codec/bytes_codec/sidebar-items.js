@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["BytesCodec","A simple `Codec` implementation that just ships bytes around."]]});

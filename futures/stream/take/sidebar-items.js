@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["Take","A stream combinator which returns a maximum number of elements."]]});

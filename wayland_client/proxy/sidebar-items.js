@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["NewProxy","A newly-created proxy that needs implementation"],["Proxy","An handle to a wayland proxy"]]});

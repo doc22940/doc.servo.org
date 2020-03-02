@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["read_link","Reads a symbolic link, returning the file that the link points to."]],"struct":[["ReadLinkFuture","Future returned by `read_link`."]]});

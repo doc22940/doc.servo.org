@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["Chunks","An adaptor that chunks up elements in a vector."]]});

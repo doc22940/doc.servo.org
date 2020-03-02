@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["GPUBufferBinding",""]],"struct":[["GPUBufferDescriptor",""]],"type":[["GPUBufferSize",""],["GPUBufferUsageFlags",""],["GPUMappedBuffer",""]]});

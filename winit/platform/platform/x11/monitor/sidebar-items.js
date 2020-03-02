@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["DISABLE_MONITOR_LIST_CACHING",""],["FORCE_RANDR_COMPAT",""]],"fn":[["invalidate_cached_monitor_list",""],["version_is_at_least",""]],"struct":[["MONITORS",""],["MonitorId",""],["XRANDR_VERSION",""]]});

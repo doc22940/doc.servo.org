@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["candidate",""],["construct",""],["on_incoming_decodebin_stream",""],["on_incoming_stream",""],["on_offer_or_answer_created",""],["process_new_stream",""]],"struct":[["GStreamerWebRtcController",""],["MLineInfo",""]]});

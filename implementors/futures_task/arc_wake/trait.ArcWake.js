@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["futures_executor"] = [{"text":"impl <a class=\"trait\" href=\"futures_task/arc_wake/trait.ArcWake.html\" title=\"trait futures_task::arc_wake::ArcWake\">ArcWake</a> for <a class=\"struct\" href=\"futures_executor/local_pool/struct.ThreadNotify.html\" title=\"struct futures_executor::local_pool::ThreadNotify\">ThreadNotify</a>","synthetic":false,"types":["futures_executor::local_pool::ThreadNotify"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

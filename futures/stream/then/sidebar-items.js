@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["Then","A stream combinator which chains a computation onto each item produced by a stream."]]});

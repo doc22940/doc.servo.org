@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["make_wid",""]],"mod":[["event_loop",""],["keyboard",""],["pointer",""],["touch",""],["window",""]],"struct":[["DeviceId",""],["WindowId",""]]});

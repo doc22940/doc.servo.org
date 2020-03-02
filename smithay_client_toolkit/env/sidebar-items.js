@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Shell","Possible shell globals"]],"struct":[["Environment","A convenience for global management"]]});

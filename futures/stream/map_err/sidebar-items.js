@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["MapErr","A stream combinator which will change the error type of a stream from one type to another."]]});

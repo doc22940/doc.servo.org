@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `clip` mod in crate `webrender`."><meta name="keywords" content="rust, rustlang, rust-lang, clip"><title>webrender::clip - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../webrender/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a><p class='location'>Module clip</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#constants">Constants</a></li><li><a href="#functions">Functions</a></li><li><a href="#types">Type Definitions</a></li></ul></div><p class='location'><a href='../index.html'>webrender</a></p><script>window.sidebarCurrent = {name: 'clip', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../src/webrender/clip.rs.html#5-1603' title='goto source code'>[src]</a></span><span class='in-band'>Module <a href='../index.html'>webrender</a>::<wbr><a class="mod" href=''>clip</a></span></h1><div class='docblock'><p>Internal representation of clips in WebRender.</p>
+<h1 id="data-structures" class="section-header"><a href="#data-structures">Data structures</a></h1>
+<p>There are a number of data structures involved in the clip module:</p>
+<ul>
+<li>
+<p>ClipStore - Main interface used by other modules.</p>
+</li>
+<li>
+<p>ClipItem - A single clip item (e.g. a rounded rect, or a box shadow).
+These are an exposed API type, stored inline in a ClipNode.</p>
+</li>
+<li>
+<p>ClipNode - A ClipItem with an attached GPU handle. The GPU handle is populated
+when a ClipNodeInstance is built from this node (which happens while
+preparing primitives for render).</p>
+</li>
+</ul>
+<p>ClipNodeInstance - A ClipNode with attached positioning information (a spatial
+node index). This is stored as a contiguous array of nodes
+within the ClipStore.</p>
+<pre><code class="language-ascii">+-----------------------+-----------------------+-----------------------+
+| ClipNodeInstance      | ClipNodeInstance      | ClipNodeInstance      |
++-----------------------+-----------------------+-----------------------+
+| ClipItem              | ClipItem              | ClipItem              |
+| Spatial Node Index    | Spatial Node Index    | Spatial Node Index    |
+| GPU cache handle      | GPU cache handle      | GPU cache handle      |
+| ...                   | ...                   | ...                   |
++-----------------------+-----------------------+-----------------------+
+           0                        1                       2
+   +----------------+    |                                              |
+   | ClipNodeRange  |____|                                              |
+   |    index: 1    |                                                   |
+   |    count: 2    |___________________________________________________|
+   +----------------+
+</code></pre>
+<ul>
+<li>
+<p>ClipNodeRange - A clip item range identifies a range of clip nodes instances.
+It is stored as an (index, count).</p>
+</li>
+<li>
+<p>ClipChainNode - A clip chain node contains a handle to an interned clip item,
+positioning information (from where the clip was defined), and
+an optional parent link to another ClipChainNode. ClipChainId
+is an index into an array, or ClipChainId::NONE for no parent.</p>
+</li>
+</ul>
+<pre><code class="language-ascii">+----------------+    ____+----------------+    ____+----------------+   /---&gt; ClipChainId::NONE
+| ClipChainNode  |   |    | ClipChainNode  |   |    | ClipChainNode  |   |
++----------------+   |    +----------------+   |    +----------------+   |
+| ClipDataHandle |   |    | ClipDataHandle |   |    | ClipDataHandle |   |
+| Spatial index  |   |    | Spatial index  |   |    | Spatial index  |   |
+| Parent Id      |___|    | Parent Id      |___|    | Parent Id      |___|
+| ...            |        | ...            |        | ...            |
++----------------+        +----------------+        +----------------+
+</code></pre>
+<ul>
+<li>
+<p>ClipChainInstance - A ClipChain that has been built for a specific primitive + positioning node.</p>
+<p>When given a clip chain ID, and a local primitive rect and its spatial node, the clip module
+creates a clip chain instance. This is a struct with various pieces of useful information
+(such as a local clip rect). It also contains a (index, count)
+range specifier into an index buffer of the ClipNodeInstance structures that are actually relevant
+for this clip chain instance. The index buffer structure allows a single array to be used for
+all of the clip-chain instances built in a single frame. Each entry in the index buffer
+also stores some flags relevant to the clip node in this positioning context.</p>
+</li>
+</ul>
+<pre><code class="language-ascii">+----------------------+
+| ClipChainInstance    |
++----------------------+
+| ...                  |
+| local_clip_rect      |________________________________________________________________________
+| clips_range          |_______________                                                        |
++----------------------+              |                                                        |
+                                      |                                                        |
++------------------+------------------+------------------+------------------+------------------+
+| ClipNodeInstance | ClipNodeInstance | ClipNodeInstance | ClipNodeInstance | ClipNodeInstance |
++------------------+------------------+------------------+------------------+------------------+
+| flags            | flags            | flags            | flags            | flags            |
+| ...              | ...              | ...              | ...              | ...              |
++------------------+------------------+------------------+------------------+------------------+
+</code></pre>
+<h1 id="rendering-clipped-primitives" class="section-header"><a href="#rendering-clipped-primitives">Rendering clipped primitives</a></h1>
+<p>See the <a href="../segment/index.html"><code>segment</code> module documentation</a>.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table><tr class='module-item'><td><a class="struct" href="struct.ClipChainId.html" title='webrender::clip::ClipChainId struct'>ClipChainId</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="struct" href="struct.ClipChainInstance.html" title='webrender::clip::ClipChainInstance struct'>ClipChainInstance</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="struct" href="struct.ClipChainLevel.html" title='webrender::clip::ClipChainLevel struct'>ClipChainLevel</a></td><td class='docblock-short'><p>Maintains a (flattened) list of clips for a given level in the surface level stack.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.ClipChainNode.html" title='webrender::clip::ClipChainNode struct'>ClipChainNode</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="struct" href="struct.ClipChainStack.html" title='webrender::clip::ClipChainStack struct'>ClipChainStack</a></td><td class='docblock-short'><p>Maintains a stack of clip chain ids that are currently active,
+when a clip exists on a picture that has no surface, and is passed
+on down to the child primitive(s).</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.ClipInternData.html" title='webrender::clip::ClipInternData struct'>ClipInternData</a></td><td class='docblock-short'><p>The data available about an interned clip node during scene building</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.ClipItem.html" title='webrender::clip::ClipItem struct'>ClipItem</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="struct" href="struct.ClipItemKey.html" title='webrender::clip::ClipItemKey struct'>ClipItemKey</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="struct" href="struct.ClipNode.html" title='webrender::clip::ClipNode struct'>ClipNode</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="struct" href="struct.ClipNodeFlags.html" title='webrender::clip::ClipNodeFlags struct'>ClipNodeFlags</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="struct" href="struct.ClipNodeInfo.html" title='webrender::clip::ClipNodeInfo struct'>ClipNodeInfo</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="struct" href="struct.ClipNodeInstance.html" title='webrender::clip::ClipNodeInstance struct'>ClipNodeInstance</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="struct" href="struct.ClipNodeRange.html" title='webrender::clip::ClipNodeRange struct'>ClipNodeRange</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="struct" href="struct.ClipRegion.html" title='webrender::clip::ClipRegion struct'>ClipRegion</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="struct" href="struct.ClipStore.html" title='webrender::clip::ClipStore struct'>ClipStore</a></td><td class='docblock-short'><p>The main clipping public interface that other modules access.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.ComplexTranslateIter.html" title='webrender::clip::ComplexTranslateIter struct'>ComplexTranslateIter</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="struct" href="struct.Geometry.html" title='webrender::clip::Geometry struct'>Geometry</a></td><td class='docblock-short'><p>Represents a local rect and a device space
+rectangles that are either outside or inside bounds.</p>
+</td></tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table><tr class='module-item'><td><a class="enum" href="enum.ClipItemKeyKind.html" title='webrender::clip::ClipItemKeyKind enum'>ClipItemKeyKind</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="enum" href="enum.ClipItemKind.html" title='webrender::clip::ClipItemKind enum'>ClipItemKind</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="enum" href="enum.ClipNodeKind.html" title='webrender::clip::ClipNodeKind enum'>ClipNodeKind</a></td><td class='docblock-short'><p>Helper to identify simple clips (normal rects) from other kinds of clips,
+which can often be handled via fast code paths.</p>
+</td></tr><tr class='module-item'><td><a class="enum" href="enum.ClipResult.html" title='webrender::clip::ClipResult enum'>ClipResult</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="enum" href="enum.ClipSpaceConversion.html" title='webrender::clip::ClipSpaceConversion enum'>ClipSpaceConversion</a></td><td class='docblock-short'><p>A helper struct for converting between coordinate systems
+of clip sources and primitives.</p>
+</td></tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table><tr class='module-item'><td><a class="constant" href="constant._IMPL_SERIALIZE_FOR_ClipChainId.html" title='webrender::clip::_IMPL_SERIALIZE_FOR_ClipChainId constant'>_IMPL_SERIALIZE_FOR_ClipChainId</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="constant" href="constant._IMPL_SERIALIZE_FOR_ClipChainInstance.html" title='webrender::clip::_IMPL_SERIALIZE_FOR_ClipChainInstance constant'>_IMPL_SERIALIZE_FOR_ClipChainInstance</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="constant" href="constant._IMPL_SERIALIZE_FOR_ClipChainNode.html" title='webrender::clip::_IMPL_SERIALIZE_FOR_ClipChainNode constant'>_IMPL_SERIALIZE_FOR_ClipChainNode</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="constant" href="constant._IMPL_SERIALIZE_FOR_ClipInternData.html" title='webrender::clip::_IMPL_SERIALIZE_FOR_ClipInternData constant'>_IMPL_SERIALIZE_FOR_ClipInternData</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="constant" href="constant._IMPL_SERIALIZE_FOR_ClipItem.html" title='webrender::clip::_IMPL_SERIALIZE_FOR_ClipItem constant'>_IMPL_SERIALIZE_FOR_ClipItem</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="constant" href="constant._IMPL_SERIALIZE_FOR_ClipItemKey.html" title='webrender::clip::_IMPL_SERIALIZE_FOR_ClipItemKey constant'>_IMPL_SERIALIZE_FOR_ClipItemKey</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="constant" href="constant._IMPL_SERIALIZE_FOR_ClipItemKeyKind.html" title='webrender::clip::_IMPL_SERIALIZE_FOR_ClipItemKeyKind constant'>_IMPL_SERIALIZE_FOR_ClipItemKeyKind</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="constant" href="constant._IMPL_SERIALIZE_FOR_ClipItemKind.html" title='webrender::clip::_IMPL_SERIALIZE_FOR_ClipItemKind constant'>_IMPL_SERIALIZE_FOR_ClipItemKind</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="constant" href="constant._IMPL_SERIALIZE_FOR_ClipNode.html" title='webrender::clip::_IMPL_SERIALIZE_FOR_ClipNode constant'>_IMPL_SERIALIZE_FOR_ClipNode</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="constant" href="constant._IMPL_SERIALIZE_FOR_ClipNodeFlags.html" title='webrender::clip::_IMPL_SERIALIZE_FOR_ClipNodeFlags constant'>_IMPL_SERIALIZE_FOR_ClipNodeFlags</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="constant" href="constant._IMPL_SERIALIZE_FOR_ClipNodeInfo.html" title='webrender::clip::_IMPL_SERIALIZE_FOR_ClipNodeInfo constant'>_IMPL_SERIALIZE_FOR_ClipNodeInfo</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="constant" href="constant._IMPL_SERIALIZE_FOR_ClipNodeInstance.html" title='webrender::clip::_IMPL_SERIALIZE_FOR_ClipNodeInstance constant'>_IMPL_SERIALIZE_FOR_ClipNodeInstance</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="constant" href="constant._IMPL_SERIALIZE_FOR_ClipNodeKind.html" title='webrender::clip::_IMPL_SERIALIZE_FOR_ClipNodeKind constant'>_IMPL_SERIALIZE_FOR_ClipNodeKind</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="constant" href="constant._IMPL_SERIALIZE_FOR_ClipNodeRange.html" title='webrender::clip::_IMPL_SERIALIZE_FOR_ClipNodeRange constant'>_IMPL_SERIALIZE_FOR_ClipNodeRange</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="constant" href="constant._IMPL_SERIALIZE_FOR_ClipSpaceConversion.html" title='webrender::clip::_IMPL_SERIALIZE_FOR_ClipSpaceConversion constant'>_IMPL_SERIALIZE_FOR_ClipSpaceConversion</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="constant" href="constant._IMPL_SERIALIZE_FOR_ClipStore.html" title='webrender::clip::_IMPL_SERIALIZE_FOR_ClipStore constant'>_IMPL_SERIALIZE_FOR_ClipStore</a></td><td class='docblock-short'></td></tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table><tr class='module-item'><td><a class="fn" href="fn.add_clip_node_to_current_chain.html" title='webrender::clip::add_clip_node_to_current_chain fn'>add_clip_node_to_current_chain</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="fn" href="fn.compute_box_shadow_parameters.html" title='webrender::clip::compute_box_shadow_parameters fn'>compute_box_shadow_parameters</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="fn" href="fn.project_inner_rect.html" title='webrender::clip::project_inner_rect fn'>project_inner_rect</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="fn" href="fn.rounded_rectangle_contains_point.html" title='webrender::clip::rounded_rectangle_contains_point fn'>rounded_rectangle_contains_point</a></td><td class='docblock-short'></td></tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table><tr class='module-item'><td><a class="type" href="type.ClipDataHandle.html" title='webrender::clip::ClipDataHandle type'>ClipDataHandle</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="type" href="type.ClipDataStore.html" title='webrender::clip::ClipDataStore type'>ClipDataStore</a></td><td class='docblock-short'></td></tr></table></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../";window.currentCrate = "webrender";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>

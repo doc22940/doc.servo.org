@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["DEFAULT_BIND_GROUPS",""]],"enum":[["LayoutChange",""],["Provision",""]],"struct":[["BindGroupEntry",""],["BindGroupPair",""],["Binder",""],["FollowUpIter",""]],"type":[["BindGroupMask",""]]});

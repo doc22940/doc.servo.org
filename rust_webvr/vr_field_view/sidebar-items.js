@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["VRFieldOfView","The VRFieldOfView interface represents a field of view,  as given by 4 degrees describing the view from a center point."]]});

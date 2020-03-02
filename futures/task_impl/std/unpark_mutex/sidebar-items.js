@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["COMPLETE",""],["POLLING",""],["REPOLL",""],["WAITING",""]],"struct":[["UnparkMutex","A \"lock\" around data `D`, which employs a helping strategy."]]});

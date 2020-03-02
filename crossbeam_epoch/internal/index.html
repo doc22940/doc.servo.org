@@ -1,0 +1,35 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `internal` mod in crate `crossbeam_epoch`."><meta name="keywords" content="rust, rustlang, rust-lang, internal"><title>crossbeam_epoch::internal - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../crossbeam_epoch/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a><p class='location'>Module internal</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#constants">Constants</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'><a href='../index.html'>crossbeam_epoch</a></p><script>window.sidebarCurrent = {name: 'internal', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../src/crossbeam_epoch/internal.rs.html#1-595' title='goto source code'>[src]</a></span><span class='in-band'>Module <a href='../index.html'>crossbeam_epoch</a>::<wbr><a class="mod" href=''>internal</a></span></h1><div class='docblock'><p>The global data and participant for garbage collection.</p>
+<h1 id="registration" class="section-header"><a href="#registration">Registration</a></h1>
+<p>In order to track all participants in one place, we need some form of participant
+registration. When a participant is created, it is registered to a global lock-free
+singly-linked list of registries; and when a participant is leaving, it is unregistered from the
+list.</p>
+<h1 id="pinning" class="section-header"><a href="#pinning">Pinning</a></h1>
+<p>Every participant contains an integer that tells whether the participant is pinned and if so,
+what was the global epoch at the time it was pinned. Participants also hold a pin counter that
+aids in periodic global epoch advancement.</p>
+<p>When a participant is pinned, a <code>Guard</code> is returned as a witness that the participant is pinned.
+Guards are necessary for performing atomic operations, and for freeing/dropping locations.</p>
+<h1 id="thread-local-bag" class="section-header"><a href="#thread-local-bag">Thread-local bag</a></h1>
+<p>Objects that get unlinked from concurrent data structures must be stashed away until the global
+epoch sufficiently advances so that they become safe for destruction. Pointers to such objects
+are pushed into a thread-local bag, and when it becomes full, the bag is marked with the current
+global epoch and pushed into the global queue of bags. We store objects in thread-local storages
+for amortizing the synchronization cost of pushing the garbages to a global queue.</p>
+<h1 id="global-queue" class="section-header"><a href="#global-queue">Global queue</a></h1>
+<p>Whenever a bag is pushed into a queue, the objects in some bags in the queue are collected and
+destroyed along the way. This design reduces contention on data structures. The global queue
+cannot be explicitly accessed: the only way to interact with it is by calling functions
+<code>defer()</code> that adds an object tothe thread-local bag, or <code>collect()</code> that manually triggers
+garbage collection.</p>
+<p>Ideally each instance of concurrent data structure may have its own queue that gets fully
+destroyed as soon as the data structure gets dropped.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table><tr class='module-item'><td><a class="struct" href="struct.Bag.html" title='crossbeam_epoch::internal::Bag struct'>Bag</a></td><td class='docblock-short'><p>A bag of deferred functions.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.Global.html" title='crossbeam_epoch::internal::Global struct'>Global</a></td><td class='docblock-short'><p>The global data for a garbage collector.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.Local.html" title='crossbeam_epoch::internal::Local struct'>Local</a></td><td class='docblock-short'><p>Participant for garbage collection.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.SealedBag.html" title='crossbeam_epoch::internal::SealedBag struct'>SealedBag</a></td><td class='docblock-short'><p>A pair of an epoch and a bag.</p>
+</td></tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table><tr class='module-item'><td><a class="constant" href="constant.MAX_OBJECTS.html" title='crossbeam_epoch::internal::MAX_OBJECTS constant'>MAX_OBJECTS</a></td><td class='docblock-short'><p>Maximum number of objects a bag can contain.</p>
+</td></tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table><tr class='module-item'><td><a class="fn" href="fn.no_op_func.html" title='crossbeam_epoch::internal::no_op_func fn'>no_op_func</a></td><td class='docblock-short'></td></tr></table></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../";window.currentCrate = "crossbeam_epoch";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>

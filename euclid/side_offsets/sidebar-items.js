@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_SideOffsets2D",""],["_IMPL_SERIALIZE_FOR_SideOffsets2D",""]],"struct":[["SideOffsets2D","A group of 2D side offsets, which correspond to top/left/bottom/right for borders, padding, and margins in CSS, optionally tagged with a unit."]]});

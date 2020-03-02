@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["futures_crate_path",""]]});

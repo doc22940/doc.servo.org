@@ -1,0 +1,275 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `imp` mod in crate `regex`."><meta name="keywords" content="rust, rustlang, rust-lang, imp"><title>regex::literal::teddy_ssse3::imp - Rust</title><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../dark.css"><link rel="stylesheet" type="text/css" href="../../../../light.css" id="themeStyle"><script src="../../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="shortcut icon" href="../../../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../../../down-arrow.svg");}</style></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../../regex/index.html'><div class='logo-container'><img src='../../../../rust-logo.png' alt='logo'></div></a><p class='location'>Module imp</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#constants">Constants</a></li></ul></div><p class='location'><a href='../../../index.html'>regex</a>::<wbr><a href='../../index.html'>literal</a>::<wbr><a href='../index.html'>teddy_ssse3</a></p><script>window.sidebarCurrent = {name: 'imp', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../../../settings.html"><img src="../../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../../../src/regex/literal/teddy_ssse3/imp.rs.html#1-780' title='goto source code'>[src]</a></span><span class='in-band'>Module <a href='../../../index.html'>regex</a>::<wbr><a href='../../index.html'>literal</a>::<wbr><a href='../index.html'>teddy_ssse3</a>::<wbr><a class="mod" href=''>imp</a></span></h1><div class='docblock'><p>Teddy is a simd accelerated multiple substring matching algorithm. The name
+and the core ideas in the algorithm were learned from the <a href="https://github.com/01org/hyperscan">Hyperscan</a>
+project.</p>
+<h2 id="background" class="section-header"><a href="#background">Background</a></h2>
+<p>The key idea of Teddy is to do <em>packed</em> substring matching. In the literature,
+packed substring matching is the idea of examing multiple bytes in a haystack
+at a time to detect matches. Implementations of, for example, memchr (which
+detects matches of a single byte) have been doing this for years. Only
+recently, with the introduction of various SIMD instructions, has this been
+extended to substring matching. The PCMPESTRI instruction (and its relatives),
+for example, implements substring matching in hardware. It is, however, limited
+to substrings of length 16 bytes or fewer, but this restriction is fine in a
+regex engine, since we rarely care about the performance difference between
+searching for a 16 byte literal and a 16 + N literal; 16 is already long
+enough. The key downside of the PCMPESTRI instruction, on current (2016) CPUs
+at least, is its latency and throughput. As a result, it is often faster to do
+substring search with a Boyer-Moore variant and a well placed memchr to quickly
+skip through the haystack.</p>
+<p>There are fewer results from the literature on packed substring matching,
+and even fewer for packed multiple substring matching. Ben-Kiki et al. [2]
+describes use of PCMPESTRI for substring matching, but is mostly theoretical
+and hand-waves performance. There is other theoretical work done by Bille [3]
+as well.</p>
+<p>The rest of the work in the field, as far as I'm aware, is by Faro and Kulekci
+and is generally focused on multiple pattern search. Their first paper [4a]
+introduces the concept of a fingerprint, which is computed for every block of
+N bytes in every pattern. The haystack is then scanned N bytes at a time and
+a fingerprint is computed in the same way it was computed for blocks in the
+patterns. If the fingerprint corresponds to one that was found in a pattern,
+then a verification step follows to confirm that one of the substrings with the
+corresponding fingerprint actually matches at the current location. Various
+implementation tricks are employed to make sure the fingerprint lookup is fast;
+typically by truncating the fingerprint. (This may, of course, provoke more
+steps in the verification process, so a balance must be struck.)</p>
+<p>The main downside of [4a] is that the minimum substring length is 32 bytes,
+presumably because of how the algorithm uses certain SIMD instructions. This
+essentially makes it useless for general purpose regex matching, where a small
+number of short patterns is far more likely.</p>
+<p>Faro and Kulekci published another paper [4b] that is conceptually very similar
+to [4a]. The key difference is that it uses the CRC32 instruction (introduced
+as part of SSE 4.2) to compute fingerprint values. This also enables the
+algorithm to work effectively on substrings as short as 7 bytes with 4 byte
+windows. 7 bytes is unfortunately still too long. The window could be
+technically shrunk to 2 bytes, thereby reducing minimum length to 3, but the
+small window size ends up negating most performance benefits—and it's likely
+the common case in a general purpose regex engine.</p>
+<p>Faro and Kulekci also published [4c] that appears to be intended as a
+replacement to using PCMPESTRI. In particular, it is specifically motivated by
+the high throughput/latency time of PCMPESTRI and therefore chooses other SIMD
+instructions that are faster. While this approach works for short substrings,
+I personally couldn't see a way to generalize it to multiple substring search.</p>
+<p>Faro and Kulekci have another paper [4d] that I haven't been able to read
+because it is behind a paywall.</p>
+<h2 id="teddy" class="section-header"><a href="#teddy">Teddy</a></h2>
+<p>Finally, we get to Teddy. If the above literature review is complete, then it
+appears that Teddy is a novel algorithm. More than that, in my experience, it
+completely blows away the competition for short substrings, which is exactly
+what we want in a general purpose regex engine. Again, the algorithm appears
+to be developed by the authors of <a href="https://github.com/01org/hyperscan">Hyperscan</a>. Hyperscan was open sourced
+late 2015, and no earlier history could be found. Therefore, tracking the exact
+provenance of the algorithm with respect to the published literature seems
+difficult.</p>
+<p>DISCLAIMER: My understanding of Teddy is limited to reading auto-generated C
+code, its disassembly and observing its runtime behavior.</p>
+<p>At a high level, Teddy works somewhat similarly to the fingerprint algorithms
+published by Faro and Kulekci, but Teddy does it in a way that scales a bit
+better. Namely:</p>
+<ol>
+<li>Teddy's core algorithm scans the haystack in 16 byte chunks. 16 is
+significant because it corresponds to the number of bytes in a SIMD vector.
+If one used AVX2 instructions, then we could scan the haystack in 32 byte
+chunks. Similarly, if one used AVX512 instructions, we could scan the
+haystack in 64 byte chunks. Hyperscan implements SSE + AVX2, we only
+implement SSE for the moment.</li>
+<li>Bitwise operations are performed on each chunk to discover if any region of
+it matches a set of precomputed fingerprints from the patterns. If there are
+matches, then a verification step is performed. In this implementation, our
+verification step is naive. This can be improved upon.</li>
+</ol>
+<p>The details to make this work are quite clever. First, we must choose how to
+pick our fingerprints. In Hyperscan's implementation, I <em>believe</em> they use the
+last N bytes of each substring, where N must be at least the minimum length of
+any substring in the set being searched. In this implementation, we use the
+first N bytes of each substring. (The tradeoffs between these choices aren't
+yet clear to me.) We then must figure out how to quickly test whether an
+occurrence of any fingerprint from the set of patterns appears in a 16 byte
+block from the haystack. To keep things simple, let's assume N = 1 and examine
+some examples to motivate the approach. Here are our patterns:</p>
+
+<div class='information'><div class='tooltip ignore'>ⓘ<span class='tooltiptext'>This example is not tested</span></div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore">
+<span class="ident">foo</span>
+<span class="ident">bar</span>
+<span class="ident">baz</span></pre></div>
+<p>The corresponding fingerprints, for N = 1, are <code>f</code>, <code>b</code> and <code>b</code>. Now let's set
+our 16 byte block to:</p>
+
+<div class='information'><div class='tooltip ignore'>ⓘ<span class='tooltiptext'>This example is not tested</span></div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore">
+<span class="ident">bat</span> <span class="ident">cat</span> <span class="ident">foo</span> <span class="ident">bump</span>
+<span class="ident">xxxxxxxxxxxxxxxx</span></pre></div>
+<p>To cut to the chase, Teddy works by using bitsets. In particular, Teddy creates
+a mask that allows us to quickly compute membership of a fingerprint in a 16
+byte block that also tells which pattern the fingerprint corresponds to. In
+this case, our fingerprint is a single byte, so an appropriate abstraction is
+a map from a single byte to a list of patterns that contain that fingerprint:</p>
+
+<div class='information'><div class='tooltip ignore'>ⓘ<span class='tooltiptext'>This example is not tested</span></div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore">
+<span class="ident">f</span> <span class="op">|</span><span class="op">-</span><span class="op">-</span><span class="op">&gt;</span> <span class="ident">foo</span>
+<span class="ident">b</span> <span class="op">|</span><span class="op">-</span><span class="op">-</span><span class="op">&gt;</span> <span class="ident">bar</span>, <span class="ident">baz</span></pre></div>
+<p>Now, all we need to do is figure out how to represent this map in vector space
+and use normal SIMD operations to perform a lookup. The first simplification
+we can make is to represent our patterns as bit fields occupying a single
+byte. This is important, because a single SIMD vector can store 16 bytes.</p>
+
+<div class='information'><div class='tooltip ignore'>ⓘ<span class='tooltiptext'>This example is not tested</span></div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore">
+<span class="ident">f</span> <span class="op">|</span><span class="op">-</span><span class="op">-</span><span class="op">&gt;</span> <span class="number">00000001</span>
+<span class="ident">b</span> <span class="op">|</span><span class="op">-</span><span class="op">-</span><span class="op">&gt;</span> <span class="number">00000010</span>, <span class="number">00000100</span></pre></div>
+<p>How do we perform lookup though? It turns out that SSSE3 introduced a very cool
+instruction called PSHUFB. The instruction takes two SIMD vectors, <code>A</code> and <code>B</code>,
+and returns a third vector <code>C</code>. All vectors are treated as 16 8-bit integers.
+<code>C</code> is formed by <code>C[i] = A[B[i]]</code>. (This is a bit of a simplification, but true
+for the purposes of this algorithm. For full details, see <a href="https://software.intel.com/sites/landingpage/IntrinsicsGuide">Intel's Intrinsics
+Guide</a>.) This essentially lets us use the values in <code>B</code> to lookup values
+in <code>A</code>.</p>
+<p>If we could somehow cause <code>B</code> to contain our 16 byte block from the haystack,
+and if <code>A</code> could contain our bitmasks, then we'd end up with something like
+this for <code>A</code>:</p>
+
+<div class='information'><div class='tooltip ignore'>ⓘ<span class='tooltiptext'>This example is not tested</span></div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore">
+    <span class="number">0x00</span> <span class="number">0x01</span> ... <span class="number">0x62</span>      ... <span class="number">0x66</span>      ... <span class="number">0xFF</span>
+<span class="ident">A</span> <span class="op">=</span> <span class="number">0</span>    <span class="number">0</span>        <span class="number">00000110</span>      <span class="number">00000001</span>      <span class="number">0</span></pre></div>
+<p>And if <code>B</code> contains our window from our haystack, we could use shuffle to take
+the values from <code>B</code> and use them to look up our bitsets in <code>A</code>. But of course,
+we can't do this because <code>A</code> in the above example contains 256 bytes, which
+is much larger than the size of a SIMD vector.</p>
+<p>Nybbles to the rescue! A nybble is 4 bits. Instead of one mask to hold all of
+our bitsets, we can use two masks, where one mask corresponds to the lower four
+bits of our fingerprint and the other mask corresponds to the upper four bits.
+So our map now looks like:</p>
+
+<div class='information'><div class='tooltip ignore'>ⓘ<span class='tooltiptext'>This example is not tested</span></div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore">
+<span class="string">&#39;f&#39;</span> <span class="op">&amp;</span> <span class="number">0xF</span> <span class="op">=</span> <span class="number">0x6</span> <span class="op">|</span><span class="op">-</span><span class="op">-</span><span class="op">&gt;</span> <span class="number">00000001</span>
+<span class="string">&#39;f&#39;</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">4</span>  <span class="op">=</span> <span class="number">0x6</span> <span class="op">|</span><span class="op">-</span><span class="op">-</span><span class="op">&gt;</span> <span class="number">00000111</span>
+<span class="string">&#39;b&#39;</span> <span class="op">&amp;</span> <span class="number">0xF</span> <span class="op">=</span> <span class="number">0x2</span> <span class="op">|</span><span class="op">-</span><span class="op">-</span><span class="op">&gt;</span> <span class="number">00000110</span>
+<span class="string">&#39;b&#39;</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">4</span>  <span class="op">=</span> <span class="number">0x6</span> <span class="op">|</span><span class="op">-</span><span class="op">-</span><span class="op">&gt;</span> <span class="number">00000111</span></pre></div>
+<p>Notice that the bitsets for each nybble correspond to the union of all
+fingerprints that contain that nybble. For example, both <code>f</code> and <code>b</code> have the
+same upper 4 bits but differ on the lower 4 bits. Putting this together, we
+have <code>A0</code>, <code>A1</code> and <code>B</code>, where <code>A0</code> is our mask for the lower nybble, <code>A1</code> is
+our mask for the upper nybble and <code>B</code> is our 16 byte block from the haystack:</p>
+
+<div class='information'><div class='tooltip ignore'>ⓘ<span class='tooltiptext'>This example is not tested</span></div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore">
+      <span class="number">0x00</span> <span class="number">0x01</span> <span class="number">0x02</span>      <span class="number">0x03</span> ... <span class="number">0x06</span>      ... <span class="number">0xF</span>
+<span class="ident">A0</span> <span class="op">=</span>  <span class="number">0</span>    <span class="number">0</span>    <span class="number">00000110</span>  <span class="number">0</span>        <span class="number">00000001</span>      <span class="number">0</span>
+<span class="ident">A1</span> <span class="op">=</span>  <span class="number">0</span>    <span class="number">0</span>    <span class="number">0</span>         <span class="number">0</span>        <span class="number">00000111</span>      <span class="number">0</span>
+<span class="ident">B</span>  <span class="op">=</span>  <span class="ident">b</span>    <span class="ident">a</span>    <span class="ident">t</span>         <span class="kw">_</span>        <span class="ident">t</span>             <span class="ident">p</span>
+<span class="ident">B</span>  <span class="op">=</span>  <span class="number">0x62</span> <span class="number">0x61</span> <span class="number">0x74</span>      <span class="number">0x20</span>     <span class="number">0x74</span>          <span class="number">0x70</span></pre></div>
+<p>But of course, we can't use <code>B</code> with <code>PSHUFB</code> yet, since its values are 8 bits,
+and we need indexes that are at most 4 bits (corresponding to one of 16
+values). We can apply the same transformation to split <code>B</code> into lower and upper
+nybbles as we did <code>A</code>. As before, <code>B0</code> corresponds to the lower nybbles and
+<code>B1</code> corresponds to the upper nybbles:</p>
+
+<div class='information'><div class='tooltip ignore'>ⓘ<span class='tooltiptext'>This example is not tested</span></div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore">
+     <span class="ident">b</span>   <span class="ident">a</span>   <span class="ident">t</span>   <span class="kw">_</span>   <span class="ident">c</span>   <span class="ident">a</span>   <span class="ident">t</span>   <span class="kw">_</span>   <span class="ident">f</span>   <span class="ident">o</span>   <span class="ident">o</span>   <span class="kw">_</span>   <span class="ident">b</span>   <span class="ident">u</span>   <span class="ident">m</span>   <span class="ident">p</span>
+<span class="ident">B0</span> <span class="op">=</span> <span class="number">0x2</span> <span class="number">0x1</span> <span class="number">0x4</span> <span class="number">0x0</span> <span class="number">0x3</span> <span class="number">0x1</span> <span class="number">0x4</span> <span class="number">0x0</span> <span class="number">0x6</span> <span class="number">0xF</span> <span class="number">0xF</span> <span class="number">0x0</span> <span class="number">0x2</span> <span class="number">0x5</span> <span class="number">0xD</span> <span class="number">0x0</span>
+<span class="ident">B1</span> <span class="op">=</span> <span class="number">0x6</span> <span class="number">0x6</span> <span class="number">0x7</span> <span class="number">0x2</span> <span class="number">0x6</span> <span class="number">0x6</span> <span class="number">0x7</span> <span class="number">0x2</span> <span class="number">0x6</span> <span class="number">0x6</span> <span class="number">0x6</span> <span class="number">0x2</span> <span class="number">0x6</span> <span class="number">0x7</span> <span class="number">0x6</span> <span class="number">0x7</span></pre></div>
+<p>And now we have a nice correspondence. <code>B0</code> can index <code>A0</code> and <code>B1</code> can index
+<code>A1</code>. Here's what we get when we apply <code>C0 = PSHUFB(A0, B0)</code>:</p>
+
+<div class='information'><div class='tooltip ignore'>ⓘ<span class='tooltiptext'>This example is not tested</span></div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore">
+     <span class="ident">b</span>         <span class="ident">a</span>        ... <span class="ident">f</span>         <span class="ident">o</span>         ... <span class="ident">p</span>
+     <span class="ident">A0</span>[<span class="number">0x2</span>]   <span class="ident">A0</span>[<span class="number">0x1</span>]      <span class="ident">A0</span>[<span class="number">0x6</span>]   <span class="ident">A0</span>[<span class="number">0xF</span>]       <span class="ident">A0</span>[<span class="number">0x0</span>]
+<span class="ident">C0</span> <span class="op">=</span> <span class="number">00000110</span>  <span class="number">0</span>            <span class="number">00000001</span>  <span class="number">0</span>             <span class="number">0</span></pre></div>
+<p>And <code>C1 = PSHUFB(A1, B1)</code>:</p>
+
+<div class='information'><div class='tooltip ignore'>ⓘ<span class='tooltiptext'>This example is not tested</span></div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore">
+     <span class="ident">b</span>         <span class="ident">a</span>        ... <span class="ident">f</span>         <span class="ident">o</span>        ... <span class="ident">p</span>
+     <span class="ident">A1</span>[<span class="number">0x6</span>]   <span class="ident">A1</span>[<span class="number">0x6</span>]      <span class="ident">A1</span>[<span class="number">0x6</span>]   <span class="ident">A1</span>[<span class="number">0x6</span>]      <span class="ident">A1</span>[<span class="number">0x7</span>]
+<span class="ident">C1</span> <span class="op">=</span> <span class="number">00000111</span>  <span class="number">00000111</span>     <span class="number">00000111</span>  <span class="number">00000111</span>     <span class="number">0</span></pre></div>
+<p>Notice how neither one of <code>C0</code> or <code>C1</code> is guaranteed to report fully correct
+results all on its own. For example, <code>C1</code> claims that <code>b</code> is a fingerprint for
+the pattern <code>foo</code> (since <code>A1[0x6] = 00000111</code>), and that <code>o</code> is a fingerprint
+for all of our patterns. But if we combined <code>C0</code> and <code>C1</code> with an <code>AND</code>
+operation:</p>
+
+<div class='information'><div class='tooltip ignore'>ⓘ<span class='tooltiptext'>This example is not tested</span></div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore">
+     <span class="ident">b</span>         <span class="ident">a</span>        ... <span class="ident">f</span>         <span class="ident">o</span>        ... <span class="ident">p</span>
+<span class="ident">C</span>  <span class="op">=</span> <span class="number">00000110</span>  <span class="number">0</span>            <span class="number">00000001</span>  <span class="number">0</span>            <span class="number">0</span></pre></div>
+<p>Then we now have that <code>C[i]</code> contains a bitset corresponding to the matching
+fingerprints in a haystack's 16 byte block, where <code>i</code> is the <code>ith</code> byte in that
+block.</p>
+<p>Once we have that, we can look for the position of the least significant bit
+in <code>C</code>. That position, modulo <code>8</code>, gives us the pattern that the fingerprint
+matches. That position, integer divided by <code>8</code>, also gives us the byte offset
+that the fingerprint occurs in inside the 16 byte haystack block. Using those
+two pieces of information, we can run a verification procedure that tries
+to match all substrings containing that fingerprint at that position in the
+haystack.</p>
+<h2 id="implementation-notes" class="section-header"><a href="#implementation-notes">Implementation notes</a></h2>
+<p>The problem with the algorithm as described above is that it uses a single byte
+for a fingerprint. This will work well if the fingerprints are rare in the
+haystack (e.g., capital letters or special characters in normal English text),
+but if the fingerprints are common, you'll wind up spending too much time in
+the verification step, which effectively negate the performance benefits of
+scanning 16 bytes at a time. Remember, the key to the performance of this
+algorithm is to do as little work as possible per 16 bytes.</p>
+<p>This algorithm can be extrapolated in a relatively straight-forward way to use
+larger fingerprints. That is, instead of a single byte prefix, we might use a
+three byte prefix. The implementation below implements N = {1, 2, 3} and always
+picks the largest N possible. The rationale is that the bigger the fingerprint,
+the fewer verification steps we'll do. Of course, if N is too large, then we'll
+end up doing too much on each step.</p>
+<p>The way to extend it is:</p>
+<ol>
+<li>Add a mask for each byte in the fingerprint. (Remember that each mask is
+composed of two SIMD vectors.) This results in a value of <code>C</code> for each byte
+in the fingerprint while searching.</li>
+<li>When testing each 16 byte block, each value of <code>C</code> must be shifted so that
+they are aligned. Once aligned, they should all be <code>AND</code>'d together. This
+will give you only the bitsets corresponding to the full match of the
+fingerprint.</li>
+</ol>
+<p>The implementation below is commented to fill in the nitty gritty details.</p>
+<h2 id="references" class="section-header"><a href="#references">References</a></h2>
+<ul>
+<li><strong>[1]</strong> <a href="https://github.com/01org/hyperscan">Hyperscan on GitHub</a>,
+<a href="https://01.org/hyperscan">webpage</a></li>
+<li><strong>[2a]</strong> Ben-Kiki, O., Bille, P., Breslauer, D., Gasieniec, L., Grossi, R.,
+&amp; Weimann, O. (2011).
+<em>Optimal packed string matching</em>.
+In LIPIcs-Leibniz International Proceedings in Informatics (Vol. 13).
+Schloss Dagstuhl-Leibniz-Zentrum fuer Informatik.
+DOI: 10.4230/LIPIcs.FSTTCS.2011.423.
+<a href="http://drops.dagstuhl.de/opus/volltexte/2011/3355/pdf/37.pdf">PDF</a>.</li>
+<li><strong>[2b]</strong> Ben-Kiki, O., Bille, P., Breslauer, D., Ga̧sieniec, L., Grossi, R.,
+&amp; Weimann, O. (2014).
+<em>Towards optimal packed string matching</em>.
+Theoretical Computer Science, 525, 111-129.
+DOI: 10.1016/j.tcs.2013.06.013.
+<a href="http://www.cs.haifa.ac.il/%7Eoren/Publications/bpsm.pdf">PDF</a>.</li>
+<li><strong>[3]</strong> Bille, P. (2011).
+<em>Fast searching in packed strings</em>.
+Journal of Discrete Algorithms, 9(1), 49-56.
+DOI: 10.1016/j.jda.2010.09.003.
+<a href="http://www.sciencedirect.com/science/article/pii/S1570866710000353">PDF</a>.</li>
+<li><strong>[4a]</strong> Faro, S., &amp; Külekci, M. O. (2012, October).
+<em>Fast multiple string matching using streaming SIMD extensions technology</em>.
+In String Processing and Information Retrieval (pp. 217-228).
+Springer Berlin Heidelberg.
+DOI: 10.1007/978-3-642-34109-0_23.
+<a href="http://www.dmi.unict.it/%7Efaro/papers/conference/faro32.pdf">PDF</a>.</li>
+<li><strong>[4b]</strong> Faro, S., &amp; Külekci, M. O. (2013, September).
+<em>Towards a Very Fast Multiple String Matching Algorithm for Short Patterns</em>.
+In Stringology (pp. 78-91).
+<a href="http://www.dmi.unict.it/%7Efaro/papers/conference/faro36.pdf">PDF</a>.</li>
+<li><strong>[4c]</strong> Faro, S., &amp; Külekci, M. O. (2013, January).
+<em>Fast packed string matching for short patterns</em>.
+In Proceedings of the Meeting on Algorithm Engineering &amp; Expermiments
+(pp. 113-121).
+Society for Industrial and Applied Mathematics.
+<a href="http://arxiv.org/pdf/1209.6449.pdf">PDF</a>.</li>
+<li><strong>[4d]</strong> Faro, S., &amp; Külekci, M. O. (2014).
+<em>Fast and flexible packed string matching</em>.
+Journal of Discrete Algorithms, 28, 61-72.
+DOI: 10.1016/j.jda.2014.07.003.</li>
+</ul>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table><tr class='module-item'><td><a class="struct" href="struct.Mask.html" title='regex::literal::teddy_ssse3::imp::Mask struct'>Mask</a></td><td class='docblock-short'><p>A single mask.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.Masks.html" title='regex::literal::teddy_ssse3::imp::Masks struct'>Masks</a></td><td class='docblock-short'><p>A list of masks. This has length equal to the length of the fingerprint.
+The length of the fingerprint is always <code>min(3, len(smallest_substring))</code>.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.Match.html" title='regex::literal::teddy_ssse3::imp::Match struct'>Match</a></td><td class='docblock-short'><p>Match reports match information.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.Teddy.html" title='regex::literal::teddy_ssse3::imp::Teddy struct'>Teddy</a></td><td class='docblock-short'><p>A SIMD accelerated multi substring searcher.</p>
+</td></tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table><tr class='module-item'><td><a class="constant" href="constant.BLOCK_SIZE.html" title='regex::literal::teddy_ssse3::imp::BLOCK_SIZE constant'>BLOCK_SIZE</a></td><td class='docblock-short'><p>Corresponds to the number of bytes read at a time in the haystack.</p>
+</td></tr></table></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../../../";window.currentCrate = "regex";</script><script src="../../../../aliases.js"></script><script src="../../../../main.js"></script><script defer src="../../../../search-index.js"></script></body></html>

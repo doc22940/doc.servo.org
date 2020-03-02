@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["Wait","A sink combinator which converts an asynchronous sink to a blocking sink."]]});

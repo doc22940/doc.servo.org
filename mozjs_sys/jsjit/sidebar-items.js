@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["JSJitInfo","This struct contains metadata passed from the DOM to the JS Engine for JIT optimizations on DOM property accessors."]]});

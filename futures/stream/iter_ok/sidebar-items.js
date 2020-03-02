@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["iter_ok","Converts an `Iterator` into a `Stream` which is always ready to yield the next value."]],"struct":[["IterOk","A stream which is just a shim over an underlying instance of `Iterator`."]]});

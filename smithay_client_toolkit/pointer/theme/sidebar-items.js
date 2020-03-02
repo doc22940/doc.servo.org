@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["PointerInner",""],["ThemeManager","Wrapper managing a system theme for pointer images"],["ThemedPointer","Wrapper of a themed pointer"]]});

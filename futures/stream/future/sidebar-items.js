@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["StreamFuture","A combinator used to temporarily convert a stream into a future."]]});

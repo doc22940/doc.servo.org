@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["VRPose","The VRPose struct represents a sensor’s state at a given timestamp."]]});

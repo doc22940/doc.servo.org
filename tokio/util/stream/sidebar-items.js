@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["StreamExt","An extension trait for `Stream` that provides a variety of convenient combinator functions."]]});

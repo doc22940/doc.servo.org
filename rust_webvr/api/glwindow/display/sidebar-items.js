@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["EYE_DISTANCE",""]],"struct":[["ArcPool",""],["GlWindowVRDisplay",""]],"type":[["GlWindowVRDisplayPtr",""]]});

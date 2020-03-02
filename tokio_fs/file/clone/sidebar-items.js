@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["CloneFuture","Future returned by `File::try_clone`."]]});

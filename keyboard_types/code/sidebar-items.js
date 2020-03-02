@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_Code",""],["_IMPL_SERIALIZE_FOR_Code",""]],"enum":[["Code","Code is the physical position of a key."]]});

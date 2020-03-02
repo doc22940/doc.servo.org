@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["Flatten","Future for the `flatten` combinator, flattening a future-of-a-future to get just the result of the final future."]]});

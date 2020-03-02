@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["NULLPTR",""]],"static":[["types_null",""],["wl_surface_interface",""],["zwp_idle_inhibit_manager_v1_interface",""],["zwp_idle_inhibit_manager_v1_requests",""],["zwp_idle_inhibit_manager_v1_requests_create_inhibitor_types",""],["zwp_idle_inhibitor_v1_interface",""],["zwp_idle_inhibitor_v1_requests",""]]});

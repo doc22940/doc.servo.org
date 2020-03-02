@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["BsDebug","Alternative implementation of `fmt::Debug` for byte slice."]]});

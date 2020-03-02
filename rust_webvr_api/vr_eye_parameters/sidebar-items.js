@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_VREyeParameters",""],["_IMPL_SERIALIZE_FOR_VREyeParameters",""]],"struct":[["VREyeParameters","The VREyeParameters interface represents all the information  required to correctly render a scene for a given eye."]]});

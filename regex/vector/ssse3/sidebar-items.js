@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["SSSE3VectorBuilder","A builder for SSSE3 empowered vectors."]],"union":[["u8x16","A u8x16 is a 128-bit vector with 16 single-byte lanes."]]});

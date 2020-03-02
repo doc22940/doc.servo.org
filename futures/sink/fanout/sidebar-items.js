@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["Downstream",""],["Fanout","Sink that clones incoming items and forwards them to two sinks at the same time."]]});

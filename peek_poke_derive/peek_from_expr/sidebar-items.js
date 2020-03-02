@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["for_enum","Calculates size expression for `DataEnum`"],["for_struct","Calculates size expression for `DataStruct`"],["get_peek_from_expr_for_fields","Calculates serialize expression for fields"],["get_peek_from_init_expr_for_fields",""]]});

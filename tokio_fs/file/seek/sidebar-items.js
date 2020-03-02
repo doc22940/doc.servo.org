@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["SeekFuture","Future returned by `File::seek`."]]});

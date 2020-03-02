@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Channel","Channel that delivers a message after a certain amount of time."]],"type":[["AfterToken","Result of a receive operation."]]});

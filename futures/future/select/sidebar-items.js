@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["OneOf",""]],"fn":[["new",""]],"struct":[["Select","Future for the `select` combinator, waiting for one of two futures to complete."],["SelectNext","Future yielded as the second result in a `Select` future."]]});

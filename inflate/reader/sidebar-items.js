@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["copy_from_slice","Workaround for lack of copy_from_slice on pre-1.9 rust."]],"struct":[["DeflateDecoder","A DEFLATE decoder/decompressor."],["DeflateDecoderBuf","A DEFLATE decoder/decompressor."]]});

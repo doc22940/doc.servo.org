@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["SkipWhile","A stream combinator which skips elements of a stream while a predicate holds."]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["ChecksumType","Whether we should validate the checksum, and what type of checksum it is."]],"fn":[["adler32_from_bytes",""]],"struct":[["Checksum",""]]});

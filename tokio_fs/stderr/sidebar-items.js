@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["stderr","Constructs a new handle to the standard error of the current process."]],"struct":[["Stderr","A handle to the standard error stream of a process."]]});

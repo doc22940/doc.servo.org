@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["MakeCurrentGuard","A guard for when you want to make the context current. Destroying the guard restores the previously-current context."],["MakeCurrentGuardInner",""]]});

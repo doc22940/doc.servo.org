@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["remove_dir","Removes an existing, empty directory."]],"struct":[["RemoveDirFuture","Future returned by `remove_dir`."]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_RigidTransform3D",""],["_IMPL_SERIALIZE_FOR_RigidTransform3D",""]],"struct":[["RigidTransform3D","A rigid transformation. All lengths are preserved under such a transformation."]]});

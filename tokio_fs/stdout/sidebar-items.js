@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["stdout","Constructs a new handle to the standard output of the current process."]],"struct":[["Stdout","A handle to the standard output stream of a process."]]});

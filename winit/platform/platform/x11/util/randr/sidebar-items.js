@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["MonitorRepr",""]],"fn":[["calc_dpi_factor",""]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["incomplete_write",""]],"struct":[["SendDgram","A future used to write the entire contents of some data to a UDP socket."],["SendDgramInner","A struct is used to represent the full info of SendDgram."]]});

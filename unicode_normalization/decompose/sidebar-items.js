@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["DecompositionType",""]],"fn":[["canonical_sort",""],["new_canonical",""],["new_compatible",""]],"struct":[["Decompositions","External iterator for a string decomposition's characters."]]});

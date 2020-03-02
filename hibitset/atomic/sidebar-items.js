@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["AtomicBitSet","This is similar to a [`BitSet`] but allows setting of value without unique ownership of the structure"],["AtomicBlock",""]]});

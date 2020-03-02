@@ -1,0 +1,4 @@
+(function() {var implementors = {};
+implementors["selectors"] = [];
+implementors["style"] = [{"text":"impl <a class=\"trait\" href=\"selectors/visitor/trait.Visit.html\" title=\"trait selectors::visitor::Visit\">Visit</a> for <a class=\"enum\" href=\"style/servo/selector_parser/enum.NonTSPseudoClass.html\" title=\"enum style::servo::selector_parser::NonTSPseudoClass\">NonTSPseudoClass</a>","synthetic":false,"types":["style::servo::selector_parser::NonTSPseudoClass"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

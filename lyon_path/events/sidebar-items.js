@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["FlattenedEvent","Path event enum that can only present line segments."],["PathEvent","Path event enum that represents all operations in absolute coordinates."],["QuadraticEvent","Path event enum that can only present quadratic bézier curves and line segments."],["SvgEvent","Path event enum that can represent all of SVG's path description syntax."]]});

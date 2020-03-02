@@ -1,0 +1,5 @@
+(function() {var implementors = {};
+implementors["debugger"] = [{"text":"impl <a class=\"trait\" href=\"ws/handler/trait.Handler.html\" title=\"trait ws::handler::Handler\">Handler</a> for <a class=\"struct\" href=\"debugger/struct.Connection.html\" title=\"struct debugger::Connection\">Connection</a>","synthetic":false,"types":["debugger::Connection"]}];
+implementors["net"] = [{"text":"impl&lt;'a&gt; <a class=\"trait\" href=\"ws/handler/trait.Handler.html\" title=\"trait ws::handler::Handler\">Handler</a> for <a class=\"struct\" href=\"net/websocket_loader/struct.Client.html\" title=\"struct net::websocket_loader::Client\">Client</a>&lt;'a&gt;","synthetic":false,"types":["net::websocket_loader::Client"]}];
+implementors["ws"] = [];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

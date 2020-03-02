@@ -1,0 +1,4 @@
+(function() {var implementors = {};
+implementors["futures_sink"] = [];
+implementors["gstreamer_app"] = [{"text":"impl <a class=\"trait\" href=\"futures_sink/trait.Sink.html\" title=\"trait futures_sink::Sink\">Sink</a>&lt;<a class=\"struct\" href=\"gstreamer/sample/struct.Sample.html\" title=\"struct gstreamer::sample::Sample\">Sample</a>&gt; for <a class=\"struct\" href=\"gstreamer_app/app_src/struct.AppSrcSink.html\" title=\"struct gstreamer_app::app_src::AppSrcSink\">AppSrcSink</a>","synthetic":false,"types":["gstreamer_app::app_src::AppSrcSink"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

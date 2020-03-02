@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["Collect","A future which collects all of the values of a stream into a vector."]]});

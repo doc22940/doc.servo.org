@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["Skip","A stream combinator which skips a number of elements before continuing."]]});

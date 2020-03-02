@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["Peekable","A `Stream` that implements a `peek` method."]]});

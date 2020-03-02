@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["hard_link","Creates a new hard link on the filesystem."]],"struct":[["HardLinkFuture","Future returned by `hard_link`."]]});

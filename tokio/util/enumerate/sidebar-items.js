@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Enumerate","A stream combinator which combines the yields the current item plus its count starting from 0."]]});

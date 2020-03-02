@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["catch_unwind",""],["chain",""],["flatten",""],["flatten_stream",""],["fuse",""],["inspect",""],["into_stream",""],["map",""],["never_error",""],["shared",""],["then",""],["unit_error",""]],"trait":[["FutureExt","An extension trait for `Future`s that provides a variety of convenient adapters."]]});

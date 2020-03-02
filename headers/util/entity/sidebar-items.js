@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["check_slice_validity","check that each char in the slice is either: 1. `%x21`, or 2. in the range `%x23` to `%x7E`, or 3. above `%x80`"]],"struct":[["EntityTag","An entity tag, defined in RFC7232"]]});

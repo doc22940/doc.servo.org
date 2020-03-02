@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_CookieStorage",""],["_IMPL_SERIALIZE_FOR_CookieStorage",""]],"fn":[["evict_one_cookie",""],["get_oldest_accessed",""],["is_cookie_expired",""],["reg_host",""]],"struct":[["CookieStorage",""]]});

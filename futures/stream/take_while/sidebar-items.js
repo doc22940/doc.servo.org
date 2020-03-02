@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["TakeWhile","A stream combinator which takes elements from a stream while a predicate holds."]]});

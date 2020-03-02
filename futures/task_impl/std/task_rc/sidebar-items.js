@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["TaskRc","A reference to a piece of data that's accessible only within a specific `Task`."]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["convert_utf8_to_utf16_up_to_invalid",""],["likely",""],["unlikely",""],["utf8_valid_up_to",""]],"static":[["UTF8_DATA",""]],"struct":[["Utf8Data",""],["Utf8Decoder",""],["Utf8Encoder",""]]});

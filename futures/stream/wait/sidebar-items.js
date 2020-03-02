@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["Wait","A stream combinator which converts an asynchronous stream to a blocking iterator."]]});

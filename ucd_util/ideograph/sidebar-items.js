@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["RANGE_IDEOGRAPH","A set of ranges that corresponds to the set of all ideograph codepoints."]],"fn":[["ideograph_name","Return the character name of the given ideograph codepoint."]]});

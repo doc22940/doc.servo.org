@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["AbsDiffEq","Equality that is defined using the absolute difference of two numbers."]]});

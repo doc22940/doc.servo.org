@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["fn_arg_typed",""],["item_existential",""],["parse_rest_of_trait",""],["parse_rest_of_trait_alias",""],["parse_start_of_trait_alias",""],["parse_trait_or_trait_alias",""]],"struct":[["existential",""]]});

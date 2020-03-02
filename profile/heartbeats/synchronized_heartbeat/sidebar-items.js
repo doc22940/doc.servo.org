@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["heartbeat_window_callback","Callback function used to log the window buffer. When this is called from native C, the heartbeat is safely locked internally and the global lock is held. If calling from this file, you must already hold the global lock!"],["lock_and_work",""]],"static":[["HBS",""],["HBS_SPINLOCK",""]]});

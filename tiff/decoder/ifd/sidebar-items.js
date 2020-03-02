@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_NUM_FROMPRIMITIVE_FOR_TYPE",""]],"enum":[["Tag","TIFF tag"],["Type",""],["Value",""]],"struct":[["Entry",""]],"type":[["Directory","Type representing an Image File Directory"]]});

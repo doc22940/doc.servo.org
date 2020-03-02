@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["InspectErr","Future for the `inspect_err` method."]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Handle","Handle to spawn a future on the corresponding `CurrentThread` runtime instance"],["RunError","Error returned by the `run` function."],["Runtime","Single-threaded runtime provides a way to start reactor and executor on the current thread."]]});

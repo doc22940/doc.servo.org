@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["GenericScrollbarColor","A generic value for `scrollbar-color` property."]],"struct":[["Cursor","A generic value for the `cursor` property."],["CursorImage","A generic value for item of `image cursors`."]]});

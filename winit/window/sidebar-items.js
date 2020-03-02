@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["AvailableMonitorsIter","An iterator for the list of available monitors."],["MonitorId","Identifier for a monitor."]]});

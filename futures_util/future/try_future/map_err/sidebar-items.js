@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["MapErr","Future for the `map_err` method."]]});

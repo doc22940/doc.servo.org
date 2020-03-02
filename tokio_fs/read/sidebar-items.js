@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["State",""]],"fn":[["read","Creates a future which will open a file for reading and read the entire contents into a buffer and return said buffer."]],"struct":[["ReadFile","A future used to open a file and read its entire contents into a buffer."]]});

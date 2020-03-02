@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_SERIALIZE_FOR_GetDescriptionReply",""],["_IMPL_SERIALIZE_FOR_SystemInfo",""]],"struct":[["DeviceActor",""],["GetDescriptionReply",""],["SystemInfo",""]]});

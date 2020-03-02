@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["TupleType","Dynamic representation, represents all decodable (sample, depth) combinations."]],"fn":[["read_separated_ascii",""]],"struct":[["BWBit",""],["PNMDecoder","PNM decoder"],["PbmBit",""],["PnmReader","Wrapper struct around a `Cursor<Vec<u8>>`"],["U16",""],["U8",""]],"trait":[["DecodableImageHeader",""],["HeaderReader",""],["Sample",""]]});

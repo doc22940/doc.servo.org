@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_Percentage",""],["_IMPL_SERIALIZE_FOR_Percentage",""]],"struct":[["Percentage","A computed percentage."]],"type":[["NonNegativePercentage","A wrapper over a `Percentage`, whose value should be clamped to 0."]]});

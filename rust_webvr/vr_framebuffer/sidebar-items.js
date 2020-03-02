@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["VRFramebuffer","Information about a FBO provided by a VRDisplay."],["VRFramebufferAttributes",""],["VRViewport",""]]});

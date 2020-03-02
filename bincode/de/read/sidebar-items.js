@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["BincodeRead","An optional Read trait for advanced Bincode usage."]]});

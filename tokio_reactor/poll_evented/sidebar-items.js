@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["is_wouldblock",""]],"struct":[["Inner",""],["PollEvented","Associates an I/O resource that implements the [`std::Read`] and / or [`std::Write`] traits with the reactor that drives it."]]});

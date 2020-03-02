@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["EYE_DISTANCE",""],["HEIGHT",""]],"struct":[["GlWindowDevice",""],["GlWindowDiscovery",""]],"trait":[["GlWindow",""]],"type":[["EventsLoopFactory",""]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["COPY_DST",""],["COPY_SRC",""],["INDEX",""],["INDIRECT",""],["MAP_READ",""],["MAP_WRITE",""],["STORAGE",""],["UNIFORM",""],["VERTEX",""]]});

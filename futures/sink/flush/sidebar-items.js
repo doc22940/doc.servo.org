@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["Flush","Future for the `Sink::flush` combinator, which polls the sink until all data has been flushed."]]});

@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["gstreamer_sdp"] = [{"text":"impl <a class=\"trait\" href=\"gstreamer_sdp/prelude/trait.StaticType.html\" title=\"trait gstreamer_sdp::prelude::StaticType\">StaticType</a> for <a class=\"struct\" href=\"gstreamer_sdp/sdp_message/struct.SDPMessage.html\" title=\"struct gstreamer_sdp::sdp_message::SDPMessage\">SDPMessage</a>","synthetic":false,"types":["gstreamer_sdp::sdp_message::SDPMessage"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["State","A future similar to RecvDgram, but without allocating and returning the peer's address."]],"struct":[["RecvDgram","A future for receiving datagrams from a Unix datagram socket."]]});

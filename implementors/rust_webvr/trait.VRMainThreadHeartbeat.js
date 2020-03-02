@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["rust_webvr"] = [{"text":"impl <a class=\"trait\" href=\"rust_webvr/trait.VRMainThreadHeartbeat.html\" title=\"trait rust_webvr::VRMainThreadHeartbeat\">VRMainThreadHeartbeat</a> for <a class=\"struct\" href=\"rust_webvr/api/glwindow/heartbeat/struct.GlWindowVRMainThreadHeartbeat.html\" title=\"struct rust_webvr::api::glwindow::heartbeat::GlWindowVRMainThreadHeartbeat\">GlWindowVRMainThreadHeartbeat</a>","synthetic":false,"types":["rust_webvr::api::glwindow::heartbeat::GlWindowVRMainThreadHeartbeat"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Connection","A no-op connection."]]});

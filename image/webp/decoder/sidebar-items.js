@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["WebpDecoder","Webp Image format decoder. Currently only supportes the luma channel (meaning that decoded images will be grayscale)."],["WebpReader","Wrapper struct around a `Cursor<Vec<u8>>`"]]});

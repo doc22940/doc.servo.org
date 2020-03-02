@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["POLL_AFTER_RESOLVE",""]],"struct":[["MetadataFuture","Future returned by `File::metadata` and resolves to a `(File, Metadata)` instance."]]});

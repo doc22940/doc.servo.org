@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_SERIALIZE_FOR_TraceEntry",""]],"fn":[["write_epilogue",""],["write_prologue",""]],"struct":[["TraceDump","An RAII class for writing the HTML trace dump."],["TraceEntry",""]]});

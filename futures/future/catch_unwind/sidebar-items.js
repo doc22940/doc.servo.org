@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["CatchUnwind","Future for the `catch_unwind` combinator."]]});

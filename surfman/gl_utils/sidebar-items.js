@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["create_and_bind_framebuffer",""],["destroy_framebuffer",""]]});

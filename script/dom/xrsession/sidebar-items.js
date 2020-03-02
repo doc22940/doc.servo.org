@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DOMOBJECT_FOR_XRSession",""]],"fn":[["cast_transform",""]],"struct":[["ApiSpace",""],["XRSession",""]],"type":[["ApiPose",""],["ApiRigidTransform",""],["ApiViewerPose",""]]});

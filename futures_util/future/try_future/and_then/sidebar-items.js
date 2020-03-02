@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["AndThen","Future for the `and_then` method."]]});

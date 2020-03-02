@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Inner",""]],"fn":[["new",""],["new2",""],["new_safe",""]],"struct":[["Concat","A stream combinator to concatenate the results of a stream into the first yielded item."],["Concat2","A stream combinator to concatenate the results of a stream into the first yielded item."],["ConcatSafe",""]]});

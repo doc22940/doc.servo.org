@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["COMPLETE",""],["IDLE",""],["NULL_WAKER_KEY",""],["POISONED",""],["POLLING",""],["REPOLL",""]],"enum":[["FutureOrOutput",""]],"struct":[["Inner",""],["Notifier",""],["Shared","Future for the `shared` method."]]});

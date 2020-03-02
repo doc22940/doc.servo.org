@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_VRFieldOfView",""],["_IMPL_SERIALIZE_FOR_VRFieldOfView",""]],"struct":[["VRFieldOfView","The VRFieldOfView interface represents a field of view,  as given by 4 degrees describing the view from a center point."]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Generate",""]],"fn":[["add_trait_bound",""],["add_trait_bound_if",""],["add_where_predicate_if",""],["get_impl","Returns `PeekPoke` trait implementation"],["get_peek_copy_impl",""],["get_peek_default_impl",""],["get_peek_poke_impl",""],["get_poke_impl",""]]});

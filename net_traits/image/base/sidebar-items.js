@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_Image",""],["_IMPL_DESERIALIZE_FOR_ImageMetadata",""],["_IMPL_SERIALIZE_FOR_Image",""],["_IMPL_SERIALIZE_FOR_ImageMetadata",""]],"fn":[["detect_image_format",""],["is_bmp",""],["is_gif",""],["is_ico",""],["is_jpeg",""],["is_png",""],["load_from_memory",""]],"struct":[["Image",""],["ImageMetadata",""]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["Inspect","Do something with the items of a stream, passing it on."]]});

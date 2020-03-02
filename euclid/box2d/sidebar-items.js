@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_Box2D",""],["_IMPL_SERIALIZE_FOR_Box2D",""]],"struct":[["Box2D","An axis aligned rectangle represented by its minimum and maximum coordinates."]]});

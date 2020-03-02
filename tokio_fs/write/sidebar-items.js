@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["State",""]],"fn":[["write","Creates a future that will open a file for writing and write the entire contents of `contents` to it."]],"struct":[["WriteFile","A future used to open a file for writing and write the entire contents of some data to it."]]});

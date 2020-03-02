@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["MediaStreamType",""]],"mod":[["capture",""],["registry",""]],"trait":[["MediaOutput","This isn't part of the webrtc spec; it's a leaky abstaction while media streams are under development and example consumers need to be able to inspect them."],["MediaStream",""]]});

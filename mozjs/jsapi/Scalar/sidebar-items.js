@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Type","Scalar types that can appear in typed arrays and typed objects.  The enum values must to be kept in sync with the JS_SCALARTYPEREPR_ constants, as well as the TypedArrayObject::classes and TypedArrayObject::protoClasses definitions."]]});

@@ -1,0 +1,4 @@
+(function() {var implementors = {};
+implementors["smithay_client_toolkit"] = [];
+implementors["winit"] = [{"text":"impl <a class=\"trait\" href=\"smithay_client_toolkit/window/trait.Theme.html\" title=\"trait smithay_client_toolkit::window::Theme\">Theme</a> for <a class=\"struct\" href=\"winit/os/unix/struct.WaylandThemeObject.html\" title=\"struct winit::os::unix::WaylandThemeObject\">WaylandThemeObject</a>","synthetic":false,"types":["winit::os::unix::WaylandThemeObject"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

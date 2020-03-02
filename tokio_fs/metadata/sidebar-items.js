@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["metadata","Queries the file system metadata for a path."]],"struct":[["MetadataFuture","Future returned by `metadata`."]]});

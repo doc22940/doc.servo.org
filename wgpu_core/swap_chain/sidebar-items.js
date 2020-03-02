@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["DESIRED_NUM_FRAMES",""],["FRAME_TIMEOUT_MS",""]],"enum":[["PresentMode",""],["SwapChainGetNextTextureError",""]],"struct":[["SwapChain",""],["SwapChainDescriptor",""],["SwapChainOutput",""]]});

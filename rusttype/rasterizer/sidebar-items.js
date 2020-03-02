@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["rasterize",""]],"struct":[["CurveSliceIter",""],["LineSliceIter",""],["PlaneSet",""]],"trait":[["SliceUp",""]],"type":[["CurveIter",""],["LineIter",""]]});

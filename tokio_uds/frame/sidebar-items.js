@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["INITIAL_RD_CAPACITY",""],["INITIAL_WR_CAPACITY",""]],"struct":[["UnixDatagramFramed","A unified `Stream` and `Sink` interface to an underlying `UnixDatagram`, using the `Encoder` and `Decoder` traits to encode and decode frames."]]});

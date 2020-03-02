@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_PrefValue",""],["_IMPL_SERIALIZE_FOR_PrefValue",""]],"enum":[["PrefError",""],["PrefValue",""]],"struct":[["Accessor",""],["Preferences",""]]});

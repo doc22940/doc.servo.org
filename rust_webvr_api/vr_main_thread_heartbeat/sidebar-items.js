@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["VRMainThreadHeartbeat","Each VR service may have some code which needs to run on the main thread, for example window creation on MacOS is only supported on the main thread. Implementations of this trait will usually be neither `Sync` nor `Send`."]]});

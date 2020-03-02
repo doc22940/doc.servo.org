@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_FontTemplateData",""],["_IMPL_SERIALIZE_FOR_FontTemplateData",""]],"struct":[["FontTemplateData","Platform specific font representation for Linux. The identifier is an absolute path, and the bytes field is the loaded data that can be passed to freetype and Raqote directly."]]});

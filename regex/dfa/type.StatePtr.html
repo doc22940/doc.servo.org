@@ -1,0 +1,34 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `StatePtr` type in crate `regex`."><meta name="keywords" content="rust, rustlang, rust-lang, StatePtr"><title>regex::dfa::StatePtr - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc type"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../regex/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a><p class='location'>Type Definition StatePtr</p><div class="sidebar-elems"><p class='location'><a href='../index.html'>regex</a>::<wbr><a href='index.html'>dfa</a></p><script>window.sidebarCurrent = {name: 'StatePtr', ty: 'type', relpath: ''};</script><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../src/regex/dfa.rs.html#370' title='goto source code'>[src]</a></span><span class='in-band'>Type Definition <a href='../index.html'>regex</a>::<wbr><a href='index.html'>dfa</a>::<wbr><a class="type" href=''>StatePtr</a></span></h1><pre class='rust typedef'>type StatePtr = <a class="primitive" href="../../std/primitive.u32.html">u32</a>;</pre><div class='docblock'><p><code>StatePtr</code> is a 32 bit pointer to the start of a row in the transition
+table.</p>
+<p>It has many special values. There are two types of special values:
+sentinels and flags.</p>
+<p>Sentinels corresponds to special states that carry some kind of
+significance. There are three such states: unknown, dead and quit states.</p>
+<p>Unknown states are states that haven't been computed yet. They indicate
+that a transition should be filled in that points to either an existing
+cached state or a new state altogether. In general, an unknown state means
+&quot;follow the NFA's epsilon transitions.&quot;</p>
+<p>Dead states are states that can never lead to a match, no matter what
+subsequent input is observed. This means that the DFA should quit
+immediately and return the longest match it has found thus far.</p>
+<p>Quit states are states that imply the DFA is not capable of matching the
+regex correctly. Currently, this is only used when a Unicode word boundary
+exists in the regex <em>and</em> a non-ASCII byte is observed.</p>
+<p>The other type of state pointer is a state pointer with special flag bits.
+There are two flags: a start flag and a match flag. The lower bits of both
+kinds always contain a &quot;valid&quot; <code>StatePtr</code> (indicated by the <code>STATE_MAX</code>
+mask).</p>
+<p>The start flag means that the state is a start state, and therefore may be
+subject to special prefix scanning optimizations.</p>
+<p>The match flag means that the state is a match state, and therefore the
+current position in the input (while searching) should be recorded.</p>
+<p>The above exists mostly in the service of making the inner loop fast.
+In particular, the inner <em>inner</em> loop looks something like this:</p>
+
+<div class='information'><div class='tooltip ignore'>ⓘ<span class='tooltiptext'>This example is not tested</span></div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore">
+<span class="kw">while</span> <span class="ident">state</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">STATE_MAX</span> <span class="ident">and</span> <span class="ident">i</span> <span class="op">&lt;</span> <span class="ident">len</span>(<span class="ident">text</span>):
+    <span class="ident">state</span> <span class="op">=</span> <span class="ident">state</span>.<span class="ident">next</span>[<span class="ident">i</span>]</pre></div>
+<p>This is nice because it lets us execute a lazy DFA as if it were an
+entirely offline DFA (i.e., with very few instructions). The loop will
+quit only when we need to examine a case that needs special attention.</p>
+</div></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../";window.currentCrate = "regex";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>

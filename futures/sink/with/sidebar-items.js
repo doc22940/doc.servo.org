@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["State",""]],"fn":[["new",""]],"struct":[["With","Sink for the `Sink::with` combinator, chaining a computation to run prior to pushing a value into the underlying sink."]]});

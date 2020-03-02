@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["FakeXRDeviceBinding",""]],"struct":[["FakeXRBoundsPoint",""],["FakeXRDeviceResolution",""],["FakeXRFieldOfViewInit",""],["FakeXRRigidTransformInit",""],["FakeXRViewInit",""]]});

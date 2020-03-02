@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["GPUBindGroupBinding",""]],"struct":[["GPUBindGroupBindings",""],["GPUBindGroupDescriptor",""],["GPUBufferBindings",""]],"type":[["GPUBindingResource",""]]});

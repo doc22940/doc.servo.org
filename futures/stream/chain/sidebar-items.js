@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["State","State of chain stream."]],"fn":[["new",""]],"struct":[["Chain","An adapter for chaining the output of two streams."]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["empty","Creates a future which never resolves, representing a computation that never finishes."]],"struct":[["Empty","A future which is never resolved."]]});

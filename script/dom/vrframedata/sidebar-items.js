@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DOMOBJECT_FOR_VRFrameData",""]],"fn":[["create_typed_array","FIXME(#22526) this should be in a better place"]],"struct":[["VRFrameData",""]]});

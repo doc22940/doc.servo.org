@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["State",""]],"fn":[["read_ready",""],["read_ready_vecs",""],["write_ready",""],["write_ready_vecs",""]],"struct":[["ConnectFuture","Future returned by `UnixStream::connect` which will resolve to a `UnixStream` when the stream is connected."],["UnixStream","A structure representing a connected Unix socket."]]});

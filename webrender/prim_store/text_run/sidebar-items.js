@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_SERIALIZE_FOR_TextRun",""],["_IMPL_SERIALIZE_FOR_TextRunKey",""],["_IMPL_SERIALIZE_FOR_TextRunPrimitive",""],["_IMPL_SERIALIZE_FOR_TextRunTemplate",""]],"struct":[["TextRun",""],["TextRunKey","A run of glyphs, with associated font information."],["TextRunPrimitive",""],["TextRunTemplate",""]],"type":[["TextRunDataHandle",""]]});

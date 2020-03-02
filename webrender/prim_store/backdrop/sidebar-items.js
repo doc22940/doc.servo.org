@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_SERIALIZE_FOR_Backdrop",""],["_IMPL_SERIALIZE_FOR_BackdropData",""]],"struct":[["Backdrop",""],["BackdropData",""]],"type":[["BackdropDataHandle",""],["BackdropKey",""],["BackdropTemplate",""]]});

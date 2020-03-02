@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Crc","The CRC calculated by a [`CrcReader`]."],["CrcReader","A wrapper around a [`Read`] that calculates the CRC."]]});

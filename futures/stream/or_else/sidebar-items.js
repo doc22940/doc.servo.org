@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["OrElse","A stream combinator which chains a computation onto errors produced by a stream."]]});

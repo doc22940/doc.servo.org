@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["ForEach","A stream combinator which executes a unit closure over each item on a stream."]]});

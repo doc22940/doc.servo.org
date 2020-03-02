@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["AppendList",""],["AppendListIterator",""],["Node",""]],"type":[["NodePtr",""]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["VREyeParameters","The VREyeParameters interface represents all the information  required to correctly render a scene for a given eye."]]});

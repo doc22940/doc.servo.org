@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["remove_file","Removes a file from the filesystem."]],"struct":[["RemoveFileFuture","Future returned by `remove_file`."]]});

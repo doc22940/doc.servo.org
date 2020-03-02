@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_VRStageParameters",""],["_IMPL_SERIALIZE_FOR_VRStageParameters",""]],"struct":[["VRStageParameters","The VRStageParameters interface represents the values describing the stage/play area for displays that support room-scale experiences."]]});

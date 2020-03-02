@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Midpoint","An implementation of the [mid-point line drawing algorithm]."]]});

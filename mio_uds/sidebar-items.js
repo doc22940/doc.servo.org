@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["cvt",""]],"mod":[["datagram",""],["listener",""],["socket",""],["stream",""]],"struct":[["UnixDatagram","A Unix datagram socket."],["UnixListener","A structure representing a Unix domain socket server."],["UnixStream","A Unix stream socket."]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["ElemState",""]],"fn":[["join_all","Creates a future which represents a collection of the results of the futures given."]],"struct":[["JoinAll","A future which takes a list of futures and resolves with a vector of the completed values."]]});

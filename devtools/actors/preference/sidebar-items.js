@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_SERIALIZE_FOR_BoolReply",""],["_IMPL_SERIALIZE_FOR_CharReply",""],["_IMPL_SERIALIZE_FOR_IntReply",""]],"struct":[["BoolReply",""],["CharReply",""],["IntReply",""],["PreferenceActor",""]]});

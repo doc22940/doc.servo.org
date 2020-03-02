@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["FilterMap","A combinator used to filter the results of a stream and simultaneously map them to a different type."]]});

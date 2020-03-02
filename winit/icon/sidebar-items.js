@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["PIXEL_SIZE",""]],"enum":[["BadIcon","An error produced when using `Icon::from_rgba` with invalid arguments."]],"struct":[["Icon","An icon used for the window titlebar, taskbar, etc."],["Pixel",""]]});

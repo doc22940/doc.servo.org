@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["expand_gray_u8",""],["expand_paletted",""]],"mod":[["stream",""]],"struct":[["Decoder","PNG Decoder"],["Limits","Limits on the resources the `Decoder` is allowed too use"],["OutputInfo","Output info"],["ReadDecoder",""],["Reader","PNG reader (mostly high-level interface)"]]});

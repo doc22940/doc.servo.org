@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_GenericFilter",""],["_IMPL_SERIALIZE_FOR_GenericFilter",""]],"enum":[["GenericFilter","A generic value for a single `filter`."]],"struct":[["GenericBoxShadow","A generic value for a single `box-shadow`."],["GenericSimpleShadow","A generic value for the `drop-shadow()` filter and the `text-shadow` property."]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["Buffer","Sink for the `Sink::buffer` combinator, which buffers up to some fixed number of values when the underlying sink is unable to accept them."]]});

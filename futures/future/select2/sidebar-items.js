@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["Select2","Future for the `select2` combinator, waiting for one of two differently-typed futures to complete."]]});

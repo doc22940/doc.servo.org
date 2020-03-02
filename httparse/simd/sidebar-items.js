@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["avx2",""],["runtime","Runtime detection of simd features. Used when the build script doesn't notice any target features at build time."],["sse42",""]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_Metadata",""],["_IMPL_SERIALIZE_FOR_Metadata",""]],"struct":[["Metadata",""]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["VRDisplayCapabilities","describes the capabilities of a VRDisplay. These are expected to be static per-device/per-user."]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["Enlargeable","An Enlargable::Larger value should be enough to calculate the sum (average) of a few hundred or thousand Enlargeable values."],["Primitive","Primitive trait from old stdlib"]]});

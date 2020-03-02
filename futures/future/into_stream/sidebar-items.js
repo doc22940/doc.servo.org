@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["IntoStream","Future that forwards one element from the underlying future (whether it is success of error) and emits EOF after that."]]});

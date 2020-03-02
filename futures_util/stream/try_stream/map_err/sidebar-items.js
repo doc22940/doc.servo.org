@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["MapErr","Stream for the `map_err` method."]]});

@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["surfman_chains"] = [{"text":"impl <a class=\"trait\" href=\"surfman_chains_api/trait.SwapChainAPI.html\" title=\"trait surfman_chains_api::SwapChainAPI\">SwapChainAPI</a> for <a class=\"struct\" href=\"surfman_chains/struct.SwapChain.html\" title=\"struct surfman_chains::SwapChain\">SwapChain</a>","synthetic":false,"types":["surfman_chains::SwapChain"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

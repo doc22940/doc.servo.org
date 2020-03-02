@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Shutdown","A future that resolves when the Tokio `Runtime` is shut down."]]});

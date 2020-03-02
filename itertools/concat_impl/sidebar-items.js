@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["concat","Combine all an iterator's elements into one element by using `Extend`."]]});

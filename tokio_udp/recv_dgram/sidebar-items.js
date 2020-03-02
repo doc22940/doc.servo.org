@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["RecvDgram","A future used to receive a datagram from a UDP socket."],["RecvDgramInner","A struct is used to represent the full info of RecvDgram."]]});

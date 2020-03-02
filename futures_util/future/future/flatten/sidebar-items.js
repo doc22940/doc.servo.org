@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Flatten","Future for the `flatten` method."]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Channel","Channel that never delivers messages."]],"type":[["NeverToken","This flavor doesn't need a token."]]});

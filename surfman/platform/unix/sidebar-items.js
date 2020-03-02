@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["wayland","Bindings to Wayland via the Linux GBM interface."],["x11","Bindings to GLX via Xlib."]]});

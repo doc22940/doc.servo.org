@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["imp","Teddy is a simd accelerated multiple substring matching algorithm. The name and the core ideas in the algorithm were learned from the [Hyperscan][1_u] project."]]});

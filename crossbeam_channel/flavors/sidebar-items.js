@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["after","Channel that delivers a message after a certain amount of time."],["array","Bounded channel based on a preallocated array."],["list","Unbounded channel implemented as a linked list."],["never","Channel that never delivers messages."],["tick","Channel that delivers messages periodically."],["zero","Zero-capacity channel."]]});

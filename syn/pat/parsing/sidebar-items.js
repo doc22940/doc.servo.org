@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["field_pat",""],["pat_box",""],["pat_ident",""],["pat_lit_expr",""],["pat_lit_or_range",""],["pat_path_or_macro_or_struct_or_range",""],["pat_range",""],["pat_reference",""],["pat_rest",""],["pat_slice",""],["pat_struct",""],["pat_tuple",""],["pat_tuple_struct",""],["pat_wild",""]]});

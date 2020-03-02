@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["SURFACE_GL_TEXTURE_TARGET",""]],"enum":[["SurfaceDrawables",""]],"fn":[["create_pixmaps",""],["get_depth_of_visual_with_id",""]],"static":[["GLX_PIXMAP_ATTRIBUTES",""]],"struct":[["NativeWidget",""],["Surface",""],["SurfaceDataGuard",""],["SurfaceTexture",""]]});

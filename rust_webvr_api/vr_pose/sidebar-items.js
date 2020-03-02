@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_VRPose",""],["_IMPL_SERIALIZE_FOR_VRPose",""]],"struct":[["VRPose","The VRPose struct represents a sensor’s state at a given timestamp."]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["_Lazy",""]],"fn":[["lazy","Creates a new future which will eventually be the same as the one created by the closure provided."]],"struct":[["Lazy","A future which defers creation of the actual future until a callback is scheduled."]]});

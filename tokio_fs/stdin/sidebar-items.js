@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["stdin","Constructs a new handle to the standard input of the current process."]],"struct":[["Stdin","A handle to the standard input stream of a process."]]});

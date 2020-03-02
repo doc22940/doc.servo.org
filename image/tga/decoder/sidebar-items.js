@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["ImageType",""]],"struct":[["ColorMap",""],["Header","Header used by TGA image files"],["TGADecoder","The representation of a TGA decoder"],["TGAReader",""]]});

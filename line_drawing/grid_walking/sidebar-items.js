@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Supercover","Like [`WalkGrid`] but takes diagonal steps if the line passes directly over a corner."],["WalkGrid","Walk along a grid, taking only orthogonal steps."]]});

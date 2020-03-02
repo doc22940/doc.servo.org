@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Kind","Allocator kind."]],"mod":[["dedicated",""],["dynamic",""],["linear",""]],"trait":[["Allocator","Allocator trait implemented for various allocators."]]});

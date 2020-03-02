@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["FromErr","Future for the `from_err` combinator, changing the error type of a future."]]});

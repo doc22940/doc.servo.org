@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["for_enum","Calculates serialize expression for `DataEnum`"],["for_struct","Calculates  expression for `DataStruct`"],["get_poke_into_expr_for_fields","Calculates serialize expression for fields"]]});

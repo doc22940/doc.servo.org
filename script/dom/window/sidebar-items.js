@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DOMOBJECT_FOR_Window",""]],"enum":[["ReflowReason","Extra information concerning the reason for reflowing."],["WindowState","Current state of the window object"]],"fn":[["base64_atob",""],["base64_btoa",""],["debug_reflow_events",""],["should_move_clip_rect",""]],"struct":[["CSSErrorReporter",""],["Window",""]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_MessagePortImpl",""],["_IMPL_DESERIALIZE_FOR_MessagePortState",""],["_IMPL_SERIALIZE_FOR_MessagePortImpl",""],["_IMPL_SERIALIZE_FOR_MessagePortState",""]],"enum":[["MessagePortState",""]],"struct":[["MessagePortImpl","The data and logic backing the DOM managed MessagePort."]]});

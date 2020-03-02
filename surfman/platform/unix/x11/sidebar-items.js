@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["adapter","A wrapper for X11 adapters."],["connection","A wrapper for X11 server connections (`DISPLAY` variables)."],["context","Wrapper for GLX contexts."],["device","A wrapper around X11 Displays."],["error","Translation of X11 errors to `surfman` errors."],["surface","Wrapper for GL-renderable pixmaps on X11."]]});

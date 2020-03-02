@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_Scale",""],["_IMPL_SERIALIZE_FOR_Scale",""]],"struct":[["Scale","A scaling factor between two different units of measurement."]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["Fuse","A stream which \"fuse\"s a stream once it's terminated."]]});

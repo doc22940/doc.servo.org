@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["MapErr","Future for the `map_err` combinator, changing the error type of a future."]]});

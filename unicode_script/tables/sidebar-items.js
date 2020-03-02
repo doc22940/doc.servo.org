@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["UNICODE_VERSION","The version of Unicode that this version of unicode-width is based on."],["script_table",""]],"enum":[["Script","Represents the Unicode character property Script."]],"fn":[["bsearch_range_value_table",""],["get_script","Find the script of a single char."]]});

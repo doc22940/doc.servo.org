@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["AndThen","Future for the `and_then` combinator, chaining a computation onto the end of another future which completes successfully."]]});

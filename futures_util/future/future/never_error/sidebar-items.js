@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["NeverError","Future for the `never_error` combinator."]]});

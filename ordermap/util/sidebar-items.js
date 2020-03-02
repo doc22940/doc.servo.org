@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["enumerate",""],["ptrdistance","return the number of steps from a to b"],["third",""]]});

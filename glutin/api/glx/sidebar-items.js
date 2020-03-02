@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["check_ext","Checks if `ext` is available."],["choose_fbconfig","Enumerates all available FBConfigs"],["create_context",""],["x_error_callback",""]],"mod":[["glx",""],["make_current_guard",""]],"struct":[["Context",""],["ContextPrototype",""],["GLX",""]]});

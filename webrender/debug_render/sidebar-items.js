@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["DESC_COLOR",""],["DESC_FONT",""],["_IMPL_SERIALIZE_FOR_DebugItem",""]],"enum":[["DebugItem",""],["DebugSampler",""]],"struct":[["DebugColorVertex",""],["DebugFontVertex",""],["DebugRenderer",""]]});

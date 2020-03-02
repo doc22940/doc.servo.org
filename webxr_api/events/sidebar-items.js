@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_Event",""],["_IMPL_DESERIALIZE_FOR_Visibility",""],["_IMPL_SERIALIZE_FOR_Event",""],["_IMPL_SERIALIZE_FOR_Visibility",""]],"enum":[["Event",""],["EventBuffer","Convenience structure for buffering up events when no event callback has been set"],["Visibility",""]]});

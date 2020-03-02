@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["SURFACE_GL_TEXTURE_TARGET",""]],"enum":[["WaylandObjects",""]],"struct":[["NativeWidget",""],["Surface",""],["SurfaceDataGuard",""],["SurfaceTexture",""]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["ALPHA16F_ARB",""],["ALPHA32F_ARB",""],["LUMINANCE16F_ARB",""],["LUMINANCE32F_ARB",""],["LUMINANCE_ALPHA16F_ARB",""],["LUMINANCE_ALPHA32F_ARB",""],["RGB16F",""],["RGB32F",""],["RGBA16F",""],["RGBA32F",""]]});

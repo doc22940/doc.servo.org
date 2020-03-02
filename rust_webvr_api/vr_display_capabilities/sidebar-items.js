@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_VRDisplayCapabilities",""],["_IMPL_SERIALIZE_FOR_VRDisplayCapabilities",""]],"struct":[["VRDisplayCapabilities","describes the capabilities of a VRDisplay. These are expected to be static per-device/per-user."]]});

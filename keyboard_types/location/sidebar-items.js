@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_Location",""],["_IMPL_SERIALIZE_FOR_Location",""]],"enum":[["Location","The location attribute contains an indication of the logical location of the key on the device."]]});

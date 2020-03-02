@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["Flatten","A combinator used to flatten a stream-of-streams into one long stream of elements."]]});

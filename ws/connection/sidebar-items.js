@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Endpoint","A little more semantic than a boolean"],["State",""]],"struct":[["Connection",""]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["VoxelOrigin","Where the center of the voxel is, at the center or a corner."]],"fn":[["compare",""]],"struct":[["WalkVoxels","Walk between two voxels, taking orthogonal steps and visiting all voxels in between."]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["WithFlatMap","Sink for the `Sink::with_flat_map` combinator, chaining a computation that returns an iterator to run prior to pushing a value into the underlying sink"]]});

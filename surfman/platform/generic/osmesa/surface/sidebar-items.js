@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["SURFACE_GL_TEXTURE_TARGET",""]],"enum":[["NativeWidget","TODO(pcwalton): Allow rendering to native widgets."]],"struct":[["Surface",""],["SurfaceDataGuard",""],["SurfaceTexture",""]]});

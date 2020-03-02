@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["read_dir","Returns a stream over the entries within a directory."]],"struct":[["DirEntry","Entries returned by the [`ReadDir`] stream."],["ReadDir","Stream of the entries in a directory."],["ReadDirFuture","Future returned by `read_dir`."]]});

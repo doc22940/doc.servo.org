@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["Fuse","A future which \"fuses\" a future once it's been resolved."]]});

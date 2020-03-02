@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["VRStageParameters","The VRStageParameters interface represents the values describing the stage/play area for displays that support room-scale experiences."]]});

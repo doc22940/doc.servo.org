@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["new",""]],"struct":[["SinkMapErr","Sink for the `Sink::sink_map_err` combinator."]]});

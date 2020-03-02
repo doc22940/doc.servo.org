@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["bad_header",""],["copy",""],["corrupt",""],["gz_encoder",""],["read_gz_header",""],["read_le_u16",""]],"struct":[["GzDecoder","A gzip streaming decoder"],["GzEncoder","A gzip streaming encoder"],["MultiGzDecoder","A gzip streaming decoder that decodes all members of a multistream"]]});

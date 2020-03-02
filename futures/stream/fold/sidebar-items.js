@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["State",""]],"fn":[["new",""]],"struct":[["Fold","A future used to collect all the results of a stream into one generic type."]]});

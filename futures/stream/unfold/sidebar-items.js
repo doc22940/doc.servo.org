@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["State",""]],"fn":[["unfold","Creates a `Stream` from a seed and a closure returning a `Future`."]],"struct":[["Unfold","A stream which creates futures, polls them and return their result"]]});

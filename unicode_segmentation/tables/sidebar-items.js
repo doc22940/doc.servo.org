@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["UNICODE_VERSION","The version of Unicode that this version of unicode-segmentation is based on."]],"mod":[["derived_property",""],["general_category",""],["grapheme",""],["util",""],["word",""]]});

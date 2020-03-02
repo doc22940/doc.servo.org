@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["FromBuf","Conversion from a [`Buf`]"]]});

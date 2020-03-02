@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["DrainBitIter","A draining `Iterator` over a [`DrainableBitSet`] structure."]]});

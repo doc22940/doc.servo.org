@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Frame","A single animation frame"],["Frames","An implementation dependent iterator, reading the frames as requested"]]});
